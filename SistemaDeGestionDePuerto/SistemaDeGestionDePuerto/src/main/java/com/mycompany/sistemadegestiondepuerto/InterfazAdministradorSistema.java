@@ -4,6 +4,7 @@
  */
 package com.mycompany.sistemadegestiondepuerto;
 
+import VentanasAdmin.CRUDbarcos;
 import VentanasAdmin.CRUDusuario;
 import VentanasAdmin.VisualUsuarios;
 
@@ -30,7 +31,11 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        tbnG_usuario = new javax.swing.JButton();
+        btnG_barcos = new javax.swing.JButton();
+        btnG_contenedores = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         CerrarSesion = new javax.swing.JMenuItem();
@@ -40,7 +45,70 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Administrador Sistema");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ADMINISTRADOR DEL SISTEMA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GESTION", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        tbnG_usuario.setText("USUARIOS");
+        tbnG_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbnG_usuarioActionPerformed(evt);
+            }
+        });
+
+        btnG_barcos.setText("BARCOS");
+        btnG_barcos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnG_barcosActionPerformed(evt);
+            }
+        });
+
+        btnG_contenedores.setText("BARCOS");
+        btnG_contenedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnG_contenedoresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnG_contenedores, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnG_barcos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbnG_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(174, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tbnG_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnG_barcos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnG_contenedores, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(528, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 227, Short.MAX_VALUE))
+        );
 
         jMenu1.setText("Inicio");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,15 +155,15 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(740, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(513, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -122,6 +190,20 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
         CRUDusuario d = new CRUDusuario();
         d.setVisible(true);
     }//GEN-LAST:event_crudActionPerformed
+
+    private void tbnG_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnG_usuarioActionPerformed
+        CRUDusuario d = new CRUDusuario();
+        d.setVisible(true);
+    }//GEN-LAST:event_tbnG_usuarioActionPerformed
+
+    private void btnG_barcosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnG_barcosActionPerformed
+        CRUDbarcos d = new CRUDbarcos();
+        d.setVisible(true);
+    }//GEN-LAST:event_btnG_barcosActionPerformed
+
+    private void btnG_contenedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnG_contenedoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnG_contenedoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,10 +243,14 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CerrarSesion;
     private javax.swing.JMenuItem VisualizarUsuarios;
+    private javax.swing.JButton btnG_barcos;
+    private javax.swing.JButton btnG_contenedores;
     private javax.swing.JMenuItem crud;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton tbnG_usuario;
     // End of variables declaration//GEN-END:variables
 }

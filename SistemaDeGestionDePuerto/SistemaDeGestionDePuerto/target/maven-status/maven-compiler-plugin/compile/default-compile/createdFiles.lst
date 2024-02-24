@@ -2,7 +2,9 @@ Clases\CLogin.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorEmbarque$3.class
 VentanasAdmin\CRUDusuario$7.class
 com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$1.class
+VentanasAdmin\CRUDbarcos$3.class
 VentanasAdmin\CRUDusuario$2.class
+com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$6.class
 com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema.class
 VentanasAdmin\VisualUsuarios$2.class
 com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$3.class
@@ -10,6 +12,7 @@ com\mycompany\sistemadegestiondepuerto\InterfazLogin$3.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorAtraque$1.class
 Clases\CConexion.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorAlmacenamiento.class
+com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$8.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorAtraque.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorEmbarque$5.class
 VentanasAdmin\CRUDusuario$4.class
@@ -20,8 +23,12 @@ com\mycompany\sistemadegestiondepuerto\InterfazOperadorEmbarque$2.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorAlmacenamiento$2.class
 com\mycompany\sistemadegestiondepuerto\InterfazLogin$1.class
 com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$5.class
+com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$7.class
 VentanasAdmin\CRUDusuario$6.class
+VentanasAdmin\CRUDbarcos.class
+VentanasAdmin\CRUDbarcos$2.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorAtraque$2.class
+VentanasAdmin\CRUDbarcos$1.class
 com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$2.class
 com\mycompany\sistemadegestiondepuerto\SistemaDeGestionDePuerto.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorEmbarque.class
