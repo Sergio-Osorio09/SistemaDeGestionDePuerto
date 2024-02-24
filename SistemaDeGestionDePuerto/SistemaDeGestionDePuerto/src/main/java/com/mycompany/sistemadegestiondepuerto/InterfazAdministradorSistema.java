@@ -4,6 +4,8 @@
  */
 package com.mycompany.sistemadegestiondepuerto;
 
+import VentanasAdmin.CRUDusuario;
+
 
 /**
  *
@@ -115,7 +117,8 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
     private void crudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudActionPerformed
-        //;
+        CRUDusuario d = new CRUDusuario();
+        d.setVisible(true);
     }//GEN-LAST:event_crudActionPerformed
 
     /**
