@@ -2,6 +2,7 @@
 package Clases;
 
 import com.mycompany.sistemadegestiondepuerto.InterfazAdministradorSistema;
+import com.mycompany.sistemadegestiondepuerto.InterfazLogin;
 import com.mycompany.sistemadegestiondepuerto.InterfazOperadorAlmacenamiento;
 import com.mycompany.sistemadegestiondepuerto.InterfazOperadorAtraque;
 import com.mycompany.sistemadegestiondepuerto.InterfazOperadorEmbarque;
@@ -63,7 +64,8 @@ public class CLogin {
                }
                
            }else{
-               JOptionPane.showMessageDialog(null, "USUARIO INEXISTENTE");
+               JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTOS");
+               new InterfazLogin().setVisible(true);
            }
             
         }catch (Exception e) {
