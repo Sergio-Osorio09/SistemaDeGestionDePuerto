@@ -65,7 +65,10 @@ public class CLogin {
                
            }else{
                JOptionPane.showMessageDialog(null, "USUARIO O CONTRASEÑA INCORRECTOS");
-               new InterfazLogin().setVisible(true);
+               InterfazLogin login = new InterfazLogin();
+               login.setLocationRelativeTo(null);
+               login.setSize(450,460);
+               login.setVisible(true);
            }
             
         }catch (Exception e) {
