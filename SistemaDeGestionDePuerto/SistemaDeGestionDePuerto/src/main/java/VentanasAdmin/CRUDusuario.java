@@ -172,6 +172,7 @@ public class CRUDusuario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtabledatos.setComponentPopupMenu(jPopupMenu1);
         jtabledatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtabledatosMouseClicked(evt);
@@ -307,7 +308,9 @@ public class CRUDusuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        // TODO add your handling code here:
+        InterfazAdministradorSistema salir = new InterfazAdministradorSistema();
+        salir.setVisible(true);
+        this.dispose();  
     }//GEN-LAST:event_btnsalirActionPerformed
 
     /**

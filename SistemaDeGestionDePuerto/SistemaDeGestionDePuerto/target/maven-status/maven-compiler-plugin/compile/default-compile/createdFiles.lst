@@ -4,6 +4,7 @@ VentanasAdmin\CRUDusuario$7.class
 com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$1.class
 VentanasAdmin\CRUDusuario$2.class
 com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema.class
+VentanasAdmin\VisualUsuarios$2.class
 com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$3.class
 com\mycompany\sistemadegestiondepuerto\InterfazLogin$3.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorAtraque$1.class
@@ -30,4 +31,6 @@ com\mycompany\sistemadegestiondepuerto\InterfazLogin$2.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorEmbarque$1.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorEmbarque$4.class
 VentanasAdmin\CRUDusuario$3.class
+VentanasAdmin\VisualUsuarios$1.class
+VentanasAdmin\VisualUsuarios.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorAlmacenamiento$1.class
