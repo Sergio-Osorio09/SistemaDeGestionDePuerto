@@ -4,8 +4,7 @@
  */
 package com.mycompany.sistemadegestiondepuerto;
 
-import VentanasAdmin.CrudUsuarios;
-import VentanasAdmin.Visual;
+import CRUDusuarios.CRUDadmin;
 
 /**
  *
@@ -101,9 +100,7 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VisualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarUsuariosActionPerformed
-        Visual v = new Visual();
-        v.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_VisualizarUsuariosActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -119,7 +116,7 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
     private void crudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudActionPerformed
-        CrudUsuarios d = new CrudUsuarios();
+        CRUDadmin d = new CRUDadmin();
         d.setVisible(true);
     }//GEN-LAST:event_crudActionPerformed
 
