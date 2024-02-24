@@ -1,7 +1,0 @@
-
-*.lst
-*.class
-SistemaDeGestionDePuerto/SistemaDeGestionDePuerto/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-SistemaDeGestionDePuerto/SistemaDeGestionDePuerto/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
-SistemaDeGestionDePuerto/SistemaDeGestionDePuerto/target/classes/Clases/CLogin.class
-SistemaDeGestionDePuerto/SistemaDeGestionDePuerto/target/classes/Clases/CConexion.class
