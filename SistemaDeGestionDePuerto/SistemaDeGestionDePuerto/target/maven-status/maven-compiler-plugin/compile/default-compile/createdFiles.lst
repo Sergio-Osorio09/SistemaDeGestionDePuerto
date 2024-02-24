@@ -16,6 +16,7 @@ com\mycompany\sistemadegestiondepuerto\InterfazAdministradorSistema$8.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorAtraque.class
 com\mycompany\sistemadegestiondepuerto\InterfazOperadorEmbarque$5.class
 VentanasAdmin\CRUDusuario$4.class
+VentanasAdmin\CRUDbarcos$4.class
 VentanasAdmin\CRUDusuario.class
 com\mycompany\sistemadegestiondepuerto\InterfazLogin.class
 VentanasAdmin\CRUDusuario$1.class
