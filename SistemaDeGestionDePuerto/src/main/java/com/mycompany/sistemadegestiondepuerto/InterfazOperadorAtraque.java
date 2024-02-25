@@ -4,7 +4,7 @@
  */
 package com.mycompany.sistemadegestiondepuerto;
 
-import VentanasAtraque.CRUDmuelle;
+import VentanasAtraque.ActualMuelle;
 import VentanasAtraque.VisualBarcos;
 
 /**
@@ -180,12 +180,14 @@ public class InterfazOperadorAtraque extends javax.swing.JFrame {
 
     private void IngresarBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarBarcoActionPerformed
         VisualBarcos barco = new VisualBarcos();
+        barco.setLocationRelativeTo(null);
+        barco.setSize(540, 380);
         barco.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_IngresarBarcoActionPerformed
 
     private void IngresarMuelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarMuelleActionPerformed
-        CRUDmuelle muelle = new CRUDmuelle();
+        ActualMuelle muelle = new ActualMuelle();
         muelle.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_IngresarMuelleActionPerformed

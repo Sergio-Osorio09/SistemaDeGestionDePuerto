@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author villa
  */
-public class CRUDmuelle extends javax.swing.JFrame {
+public class ActualMuelle extends javax.swing.JFrame {
     
     CConexion con=new CConexion();
     Connection CConexion=con.estableceConexion();
     
-    public CRUDmuelle() {
+    public ActualMuelle() {
         initComponents();
         mostrardatos();
     }
@@ -40,7 +40,6 @@ public class CRUDmuelle extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         TextoIdMuelle = new javax.swing.JTextField();
         ComboEstado = new javax.swing.JComboBox<>();
-        BotonRegistrar = new javax.swing.JButton();
         BotonActualizar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -69,14 +68,6 @@ public class CRUDmuelle extends javax.swing.JFrame {
             }
         });
 
-        BotonRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        BotonRegistrar.setText("Registrar");
-        BotonRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonRegistrarActionPerformed(evt);
-            }
-        });
-
         BotonActualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BotonActualizar.setText("Actualizar");
         BotonActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,22 +89,19 @@ public class CRUDmuelle extends javax.swing.JFrame {
                         .addComponent(BotonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(TextoIdMuelle, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(122, 122, 122)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextoIdMuelle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TextoIdMuelle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ComboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(225, 225, 225));
@@ -170,10 +158,10 @@ public class CRUDmuelle extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -215,19 +203,6 @@ public class CRUDmuelle extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BotonActualizarActionPerformed
 
-    private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
-        try {
-            PreparedStatement ps = CConexion.prepareStatement("insert into muelle (EstadoDeMuelle) values (?)");
-            ps.setString(1, ComboEstado.getSelectedItem().toString());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos guardados correctamente");
-            mostrardatos();
-            limpiarentradas();
-        } catch (SQLException e) {
-            System.out.println("Error al registrar muelle" + e);
-        }
-    }//GEN-LAST:event_BotonRegistrarActionPerformed
-
     private void TablaMuellesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMuellesMouseClicked
         int fila = this.TablaMuelles.getSelectedRow();
         this.TextoIdMuelle.setText(this.TablaMuelles.getValueAt(fila, 0).toString());
@@ -251,27 +226,27 @@ public class CRUDmuelle extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CRUDmuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActualMuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CRUDmuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActualMuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CRUDmuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActualMuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CRUDmuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ActualMuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CRUDmuelle().setVisible(true);
+                new ActualMuelle().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonActualizar;
-    private javax.swing.JButton BotonRegistrar;
     private javax.swing.JComboBox<String> ComboEstado;
     private javax.swing.JTable TablaMuelles;
     private javax.swing.JTextField TextoIdMuelle;
