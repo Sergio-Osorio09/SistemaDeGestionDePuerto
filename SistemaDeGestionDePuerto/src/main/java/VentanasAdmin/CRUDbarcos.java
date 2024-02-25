@@ -45,7 +45,6 @@ public class CRUDbarcos extends javax.swing.JFrame {
         txtdestino = new javax.swing.JTextField();
         txtcantidaddescar = new javax.swing.JTextField();
         txtcanpacidadmax = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtabledatos2 = new javax.swing.JTable();
@@ -79,9 +78,6 @@ public class CRUDbarcos extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-seleccionar-", "1", "2", "3", "4" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MUELLE", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -89,7 +85,6 @@ public class CRUDbarcos extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtdestino)
                     .addComponent(txtcantidaddescar, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
@@ -107,8 +102,6 @@ public class CRUDbarcos extends javax.swing.JFrame {
                 .addComponent(txtcantidaddescar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtcanpacidadmax, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -233,7 +226,6 @@ public class CRUDbarcos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -251,7 +243,6 @@ public class CRUDbarcos extends javax.swing.JFrame {
         modelo.addColumn("DESTINO");
         modelo.addColumn("CANTIDAD DESCARGABLE");
         modelo.addColumn("CAPACIDAD MAX");
-        modelo.addColumn("ID MUELLE");
         jtabledatos2.setModel(modelo);
         String consultasql="select * from barco";
         String data[]=new String[5];
@@ -265,7 +256,6 @@ public class CRUDbarcos extends javax.swing.JFrame {
                 data[1]=rs.getString(2);
                 data[2]=rs.getString(3);
                 data[3]=rs.getString(4);
-                data[4]=rs.getString(5);
                 modelo.addRow(data);
             }
         } catch(SQLException e){
