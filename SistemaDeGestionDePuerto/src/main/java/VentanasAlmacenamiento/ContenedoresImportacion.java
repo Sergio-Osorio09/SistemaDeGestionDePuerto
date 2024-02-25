@@ -10,10 +10,6 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author renae
- */
 public class ContenedoresImportacion extends javax.swing.JFrame {
 
     CConexion con=new CConexion();
@@ -122,10 +118,14 @@ public class ContenedoresImportacion extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         IdContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("ID "), "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IdContenedor.setEnabled(false);
 
         AsignarZona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "200101", "200102", "200103", "200104", "200105", "200301", "200302", "200303", "200304", "200305" }));
         AsignarZona.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignar Zona", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -166,9 +166,9 @@ public class ContenedoresImportacion extends javax.swing.JFrame {
                         .addComponent(UbicacionContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(AsignarZona, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(Actualizar)
-                        .addGap(33, 33, 33))
+                        .addGap(41, 41, 41))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -201,6 +201,7 @@ public class ContenedoresImportacion extends javax.swing.JFrame {
         jScrollPane2.setViewportView(TablaZona);
 
         IdZona.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IdZona.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -213,8 +214,8 @@ public class ContenedoresImportacion extends javax.swing.JFrame {
                         .addComponent(ActualizarZona))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(IdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(46, 46, 46)
+                        .addComponent(IdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(52, 52, 52)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -291,35 +292,23 @@ public class ContenedoresImportacion extends javax.swing.JFrame {
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
          try {
-        String idContenedor = IdContenedor.getText();
-        String idZonaActual = obtenerIdZonaActual(idContenedor);
-        String idZonaNueva = AsignarZona.getSelectedItem().toString();
-
-        // Verificar si la zona asignada ha cambiado
-        if (!idZonaActual.equals(idZonaNueva)) {
-            // Actualizar la tabla contenedor
-            PreparedStatement ps = CConexion.prepareStatement("UPDATE contenedor SET validezDeCarga=?, UbicacionContenedor=?, idZonaDeAlmacenamiento=? WHERE idContenedor=?");
-            ps.setString(1, Validar.getSelectedItem().toString());
-            ps.setString(2, UbicacionContenedor.getSelectedItem().toString());
-            ps.setString(3, idZonaNueva);
-            ps.setString(4, idContenedor);
-
-            int indice = ps.executeUpdate();
-            if (indice > 0) {
-                JOptionPane.showMessageDialog(rootPane, "Datos Actualizados Correctamente");
-                mostrardatos();
-                limpiarentradasContenedor();
-
-                // Actualizar la cantidad actual de la zona de almacenamiento
-                actualizarCantidadActualZona(idZonaActual, idZonaNueva);
-            } else {
-                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
-            }
+        PreparedStatement ps = CConexion.prepareStatement("UPDATE contenedor SET validezDeCarga=?, UbicacionContenedor=?, idZonaDeAlmacenamiento=? WHERE idContenedor=?");
+        ps.setString(1, Validar.getSelectedItem().toString());
+        ps.setString(2, UbicacionContenedor.getSelectedItem().toString());
+        ps.setString(3, AsignarZona.getSelectedItem().toString());
+        ps.setString(4, IdContenedor.getText());
+        
+        int indice = ps.executeUpdate();
+        if (indice > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Datos Actualizados Correctamente");
+            mostrardatos();
+            limpiarentradasContenedor();
         } else {
-            JOptionPane.showMessageDialog(null, "La zona seleccionada es la misma que la actual.");
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
         }
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al actualizar datos: " + e.getMessage());
+        e.printStackTrace();
     }
     }//GEN-LAST:event_ActualizarActionPerformed
 
@@ -346,7 +335,39 @@ public class ContenedoresImportacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void ActualizarZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarZonaActionPerformed
-        mostrardatos1();
+       try {
+        // Obtener el ID de la nueva zona de almacenamiento
+        String idZonaNueva = AsignarZona.getSelectedItem().toString();
+        
+        // Obtener la cantidad actual de la zona de almacenamiento
+        PreparedStatement psCantidadActual = CConexion.prepareStatement("SELECT cantidadActual FROM zonadealmacenamiento WHERE idZonaDeAlmacenamiento=?");
+        psCantidadActual.setString(1, idZonaNueva);
+        ResultSet rsCantidadActual = psCantidadActual.executeQuery();
+        int cantidadActual = 0;
+        if (rsCantidadActual.next()) {
+            cantidadActual = rsCantidadActual.getInt("cantidadActual");
+        }
+        
+        // Aumentar la cantidad actual en 1
+        cantidadActual++;
+
+        // Actualizar la cantidad actual en la base de datos
+        PreparedStatement psAumentar = CConexion.prepareStatement("UPDATE zonadealmacenamiento SET cantidadActual = ? WHERE idZonaDeAlmacenamiento=?");
+        psAumentar.setInt(1, cantidadActual);
+        psAumentar.setString(2, idZonaNueva);
+        
+        int indice = psAumentar.executeUpdate();
+        if (indice > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Datos Actualizados Correctamente");
+            mostrardatos1();
+            limpiarentradasContenedor();
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar datos: " + e.getMessage());
+        e.printStackTrace();
+    }
     }//GEN-LAST:event_ActualizarZonaActionPerformed
 
     /**
@@ -403,29 +424,6 @@ public class ContenedoresImportacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
    
-    private String obtenerIdZonaActual(String idContenedor) throws SQLException {
-    PreparedStatement ps = CConexion.prepareStatement("SELECT idZonaDeAlmacenamiento FROM contenedor WHERE idContenedor=?");
-    ps.setString(1, idContenedor);
-    ResultSet rs = ps.executeQuery();
-    if (rs.next()) {
-        return rs.getString("idZonaDeAlmacenamiento");
-    }
-    return null;
-    }
-    
-    private void actualizarCantidadActualZona(String idZonaActual, String idZonaNueva) throws SQLException {
-    // Disminuir la cantidad actual de la zona actual en 1
-    PreparedStatement psDisminuir = CConexion.prepareStatement("UPDATE zonadealmacenamiento SET cantidadActual = cantidadActual - 1 WHERE idZonaDeAlmacenamiento=?");
-    psDisminuir.setString(1, idZonaActual);
-    psDisminuir.executeUpdate();
-
-    // Aumentar la cantidad actual de la zona nueva en 1
-    PreparedStatement psAumentar = CConexion.prepareStatement("UPDATE zonadealmacenamiento SET cantidadActual = cantidadActual + 1 WHERE idZonaDeAlmacenamiento=?");
-    psAumentar.setString(1, idZonaNueva);
-    psAumentar.executeUpdate();
-    }
-    
-    
     private void mostrardatos() {
         DefaultTableModel modelo=new DefaultTableModel();
         modelo.addColumn("idContenedor");
@@ -493,5 +491,5 @@ public class ContenedoresImportacion extends javax.swing.JFrame {
     private void limpiarentradasZona() {
         IdZona.setText("");  
     }
-
+  
 }

@@ -10,12 +10,12 @@ import com.mycompany.sistemadegestiondepuerto.InterfazOperadorAlmacenamiento;
  *
  * @author renae
  */
-public class GestionarAlmacen extends javax.swing.JFrame {
+public class ContenedorAZonaDescarga extends javax.swing.JFrame {
 
     /**
-     * Creates new form GestionarAlmacen
+     * Creates new form ContenedorAZonaDescarga
      */
-    public GestionarAlmacen() {
+    public ContenedorAZonaDescarga() {
         initComponents();
     }
 
@@ -44,23 +44,23 @@ public class GestionarAlmacen extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(260, 260, 260)
+                .addGap(274, 274, 274)
                 .addComponent(Salir)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(412, Short.MAX_VALUE)
+                .addContainerGap(415, Short.MAX_VALUE)
                 .addComponent(Salir)
-                .addGap(37, 37, 37))
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        InterfazOperadorAlmacenamiento salir = new InterfazOperadorAlmacenamiento();
+       InterfazOperadorAlmacenamiento salir = new InterfazOperadorAlmacenamiento();
         salir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_SalirActionPerformed
@@ -82,20 +82,20 @@ public class GestionarAlmacen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionarAlmacen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContenedorAZonaDescarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionarAlmacen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContenedorAZonaDescarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionarAlmacen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContenedorAZonaDescarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionarAlmacen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContenedorAZonaDescarga.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionarAlmacen().setVisible(true);
+                new ContenedorAZonaDescarga().setVisible(true);
             }
         });
     }

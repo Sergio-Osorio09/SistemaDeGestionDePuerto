@@ -1,22 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VentanasAlmacenamiento;
-
+import Clases.CConexion;
 import com.mycompany.sistemadegestiondepuerto.InterfazOperadorAlmacenamiento;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author renae
- */
 public class ContenedoresExportacion extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ContenedoresExportacion
-     */
+    CConexion con=new CConexion();
+    Connection CConexion=con.estableceConexion();
     public ContenedoresExportacion() {
         initComponents();
+         mostrardatos();
+         mostrardatos1();
     }
 
     /**
@@ -29,6 +28,21 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
     private void initComponents() {
 
         Salir = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        ActualizarValidar = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaContenedores = new javax.swing.JTable();
+        IdContenedor = new javax.swing.JTextField();
+        Validar = new javax.swing.JComboBox<>();
+        Ubicacion = new javax.swing.JComboBox<>();
+        AsignarZona = new javax.swing.JComboBox<>();
+        Actualizar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaZona = new javax.swing.JTable();
+        IdZona = new javax.swing.JTextField();
+        ActualizarZona = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,21 +53,206 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONTENEDOR DE EXPORTACIÓN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
+        ActualizarValidar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPERACIONES", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LISTADO DE CONTENEDORES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        TablaContenedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TablaContenedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaContenedoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TablaContenedores);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        IdContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IdContenedor.setEnabled(false);
+
+        Validar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Válido", "No Válido" }));
+        Validar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Validar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        Ubicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ZonaDeSalida", "ZonaStandBy" }));
+        Ubicacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ubicación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        AsignarZona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "200201", "200202", "200203", "200204", "200205", "200301", "200302", "200303", "200304", "200305" }));
+        AsignarZona.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignar Zona", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        Actualizar.setText("Actualizar");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ActualizarValidarLayout = new javax.swing.GroupLayout(ActualizarValidar);
+        ActualizarValidar.setLayout(ActualizarValidarLayout);
+        ActualizarValidarLayout.setHorizontalGroup(
+            ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ActualizarValidarLayout.createSequentialGroup()
+                .addGroup(ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ActualizarValidarLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Validar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IdContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AsignarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(ActualizarValidarLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(Actualizar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        ActualizarValidarLayout.setVerticalGroup(
+            ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ActualizarValidarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ActualizarValidarLayout.createSequentialGroup()
+                        .addComponent(IdContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Validar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(AsignarZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Actualizar))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACTUALIZAR ZONA DE ALMACENAMIENTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        TablaZona.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TablaZona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaZonaMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(TablaZona);
+
+        IdZona.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IdZona.setEnabled(false);
+
+        ActualizarZona.setText("Actualizar");
+        ActualizarZona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarZonaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(ActualizarZona))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(IdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 29, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(IdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(ActualizarZona)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ActualizarValidar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(ActualizarValidar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(267, 267, 267)
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(424, 424, 424)
                 .addComponent(Salir)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(416, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Salir)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -64,6 +263,86 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
         salir.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_SalirActionPerformed
+
+    private void ActualizarZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarZonaActionPerformed
+        try {
+        // Obtener el ID de la nueva zona de almacenamiento
+        String idZonaNueva = AsignarZona.getSelectedItem().toString();
+        
+        // Obtener la cantidad actual de la zona de almacenamiento
+        PreparedStatement psCantidadActual = CConexion.prepareStatement("SELECT cantidadActual FROM zonadealmacenamiento WHERE idZonaDeAlmacenamiento=?");
+        psCantidadActual.setString(1, idZonaNueva);
+        ResultSet rsCantidadActual = psCantidadActual.executeQuery();
+        int cantidadActual = 0;
+        if (rsCantidadActual.next()) {
+            cantidadActual = rsCantidadActual.getInt("cantidadActual");
+        }
+        
+        // Aumentar la cantidad actual en 1
+        cantidadActual++;
+
+        // Actualizar la cantidad actual en la base de datos
+        PreparedStatement psAumentar = CConexion.prepareStatement("UPDATE zonadealmacenamiento SET cantidadActual = ? WHERE idZonaDeAlmacenamiento=?");
+        psAumentar.setInt(1, cantidadActual);
+        psAumentar.setString(2, idZonaNueva);
+        
+        int indice = psAumentar.executeUpdate();
+        if (indice > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Datos Actualizados Correctamente");
+            mostrardatos1();
+            limpiarentradasContenedor();
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar datos: " + e.getMessage());
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_ActualizarZonaActionPerformed
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        try {
+        PreparedStatement ps = CConexion.prepareStatement("UPDATE contenedor SET validezDeCarga=?, UbicacionContenedor=?, idZonaDeAlmacenamiento=? WHERE idContenedor=?");
+        ps.setString(1, Validar.getSelectedItem().toString());
+        ps.setString(2, Ubicacion.getSelectedItem().toString());
+        ps.setString(3, AsignarZona.getSelectedItem().toString());
+        ps.setString(4, IdContenedor.getText());
+        
+        int indice = ps.executeUpdate();
+        if (indice > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Datos Actualizados Correctamente");
+            mostrardatos();
+            limpiarentradasContenedor();
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar datos: " + e.getMessage());
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_ActualizarActionPerformed
+
+    private void TablaContenedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaContenedoresMouseClicked
+        Actualizar.setEnabled(true);
+        int fila=this.TablaContenedores.getSelectedRow();
+        this.IdContenedor.setText(this.TablaContenedores.getValueAt(fila, 0).toString());
+        this.Ubicacion.setSelectedItem(this.TablaContenedores.getValueAt(fila, 2).toString());
+        this.Validar.setSelectedItem(this.TablaContenedores.getValueAt(fila, 3).toString());
+        this.AsignarZona.setSelectedItem(this.TablaZona.getValueAt(fila, 6).toString());
+    }//GEN-LAST:event_TablaContenedoresMouseClicked
+
+    private void TablaZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaZonaMouseClicked
+        ActualizarZona.setEnabled(true);
+        int fila=this.TablaZona.getSelectedRow();
+        this.IdZona.setText(this.TablaZona.getValueAt(fila, 0).toString());
+    }//GEN-LAST:event_TablaZonaMouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        Actualizar.setEnabled(false);
+        ActualizarZona.setEnabled(false);
+        limpiarentradasContenedor();
+        limpiarentradasZona();
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -101,6 +380,89 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
+    private javax.swing.JPanel ActualizarValidar;
+    private javax.swing.JButton ActualizarZona;
+    private javax.swing.JComboBox<String> AsignarZona;
+    private javax.swing.JTextField IdContenedor;
+    private javax.swing.JTextField IdZona;
     private javax.swing.JButton Salir;
+    private javax.swing.JTable TablaContenedores;
+    private javax.swing.JTable TablaZona;
+    private javax.swing.JComboBox<String> Ubicacion;
+    private javax.swing.JComboBox<String> Validar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+ private void mostrardatos() {
+        DefaultTableModel modelo=new DefaultTableModel();
+        modelo.addColumn("idContenedor");
+        modelo.addColumn("TipoDeCarga");
+        modelo.addColumn("UbicacionContenedor");
+        modelo.addColumn("ValidezDeCarga");
+        modelo.addColumn("DestinoContenedor");
+        modelo.addColumn("propietarioContenedor");
+        modelo.addColumn("idZonaDeAlmacenamiento");
+        TablaContenedores.setModel(modelo);
+        String consultasql="select * from contenedor WHERE DestinoContenedor != 'Peru'";
+        String data[]=new String[7];
+        
+        Statement st;
+        try{
+            st=CConexion.createStatement();
+            ResultSet rs=st.executeQuery(consultasql);
+            while(rs.next()){
+                data[0]=rs.getString(1);
+                data[1]=rs.getString(2);
+                data[2]=rs.getString(3);
+                data[3]=rs.getString(4);
+                data[4]=rs.getString(5);
+                data[5]=rs.getString(6);
+                data[6]=rs.getString(7);
+                modelo.addRow(data);
+            }
+        } catch(SQLException e){
+            System.out.println("Error al mostrar Datos "+ e);
+        }
+    }
+    private void limpiarentradasContenedor() {
+        Validar.setSelectedIndex(0);
+        IdContenedor.setText("");  
+    }
+   
+    private void mostrardatos1() {
+        DefaultTableModel modelo=new DefaultTableModel();
+        modelo.addColumn("idZonaDeAlmacenamiento");
+        modelo.addColumn("nombreZonaDeAlmacenamiento");
+        modelo.addColumn("TipoDeCarga");
+        modelo.addColumn("CapacidadMaxima");
+        modelo.addColumn("CantidadActual");
+        TablaZona.setModel(modelo);
+        String consultasql = "SELECT * FROM zonadealmacenamiento WHERE nombreZonaDeAlmacenamiento != 'ZonaDeEntrada' ";
+        String data[]=new String[5];
+        
+        Statement st;
+        try{
+            st=CConexion.createStatement();
+            ResultSet rs=st.executeQuery(consultasql);
+            while(rs.next()){
+                data[0]=rs.getString(1);
+                data[1]=rs.getString(2);
+                data[2]=rs.getString(3);
+                data[3]=rs.getString(4);
+                data[4]=rs.getString(5);
+                modelo.addRow(data);
+            }
+        } catch(SQLException e){
+            System.out.println("Error al mostrar Datos "+ e);
+        }
+    }
+    
+    private void limpiarentradasZona() {
+        IdZona.setText("");  
+    }
 }
