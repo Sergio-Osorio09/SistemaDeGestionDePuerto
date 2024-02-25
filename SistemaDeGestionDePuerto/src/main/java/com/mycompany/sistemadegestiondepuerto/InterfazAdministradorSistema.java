@@ -39,9 +39,6 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         CerrarSesion = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        VisualizarUsuarios = new javax.swing.JMenuItem();
-        crud = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,26 +124,6 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Usuarios");
-
-        VisualizarUsuarios.setText("Visualizar Usuarios");
-        VisualizarUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VisualizarUsuariosActionPerformed(evt);
-            }
-        });
-        jMenu2.add(VisualizarUsuarios);
-
-        crud.setText("Gestion de Usuarios");
-        crud.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crudActionPerformed(evt);
-            }
-        });
-        jMenu2.add(crud);
-
-        jMenuBar1.add(jMenu2);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,11 +146,6 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void VisualizarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizarUsuariosActionPerformed
-        VisualUsuarios v = new VisualUsuarios();
-        v.setVisible(true);
-    }//GEN-LAST:event_VisualizarUsuariosActionPerformed
-
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         //
     }//GEN-LAST:event_jMenu1ActionPerformed
@@ -186,19 +158,16 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
-    private void crudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudActionPerformed
-        CRUDusuario d = new CRUDusuario();
-        d.setVisible(true);
-    }//GEN-LAST:event_crudActionPerformed
-
     private void tbnG_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnG_usuarioActionPerformed
         CRUDusuario d = new CRUDusuario();
         d.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_tbnG_usuarioActionPerformed
 
     private void btnG_barcosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnG_barcosActionPerformed
         CRUDbarcos d = new CRUDbarcos();
         d.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnG_barcosActionPerformed
 
     private void btnG_contenedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnG_contenedoresActionPerformed
@@ -242,12 +211,9 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CerrarSesion;
-    private javax.swing.JMenuItem VisualizarUsuarios;
     private javax.swing.JButton btnG_barcos;
     private javax.swing.JButton btnG_contenedores;
-    private javax.swing.JMenuItem crud;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
