@@ -53,7 +53,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
         TextoDestino = new javax.swing.JTextField();
         TextoIdBarco = new javax.swing.JTextField();
         TextoEstado = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        BotonVolver = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         TextoIdMuelle = new javax.swing.JTextField();
         ComboEstadoMuelle = new javax.swing.JComboBox<>();
@@ -61,7 +61,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPERADOR DE ATRAQUE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACTUALIZAR Y ASIGNAR MUELLES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VISUALIZAR MUELLES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
@@ -160,11 +160,9 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
         TextoCapacidad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Capacidad Maxima", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         TextoCapacidad.setEnabled(false);
 
-        TextoDestino.setEditable(false);
         TextoDestino.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Destino de Barco", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         TextoDestino.setEnabled(false);
 
-        TextoIdBarco.setEditable(false);
         TextoIdBarco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID Barco", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         TextoIdBarco.setEnabled(false);
         TextoIdBarco.addActionListener(new java.awt.event.ActionListener() {
@@ -176,11 +174,11 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
         TextoEstado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado de Operaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         TextoEstado.setEnabled(false);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonVolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonVolver.setText("Volver");
+        BotonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonVolverActionPerformed(evt);
             }
         });
 
@@ -207,7 +205,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(BotonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -226,7 +224,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BotonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -326,17 +324,23 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
 
     private void BotonAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAsignarActionPerformed
         try {
-            // Verificar si el estado de operaciones del barco es 'admitido' y si no hay otro barco admitido con el mismo idMuelle
-            String query = "select count(*) from barco where idMuelle = ? and OperacionesBarco = 'Aprobado'";
+            // Verificar si se ha seleccionado una fila en la tabla
+            if (TablaBarcos.getSelectedRow() < 0) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila en la tabla antes de continuar");
+                return;
+            }
+
+            // Verificar si el estado de operaciones del barco es 'Aprobado' y si no hay otro barco aprobado con el mismo idMuelle
+            String query = "SELECT COUNT(*) FROM barco WHERE idMuelle = ? AND OperacionesBarco = 'Aprobado'";
             try (PreparedStatement stmt = CConexion.prepareStatement(query)) {
                 stmt.setInt(1, Integer.parseInt(TextoAsignarMuelle.getText()));
                 ResultSet rs = stmt.executeQuery();
                 rs.next();
                 int count = rs.getInt(1);
-            
+
                 if (count == 0 || TextoEstado.getText().equals("Finalizado")) {
                     // Si no hay conflictos, actualizar los datos del barco
-                    query = "Update barco set DestinoBarco = ?, CantidadDescargable = ?, CapacidadMaxima = ?, idMuelle = ? where idBarco = ? and OperacionesBarco = 'Aprobado'";
+                    query = "UPDATE barco SET DestinoBarco = ?, CantidadDescargable = ?, CapacidadMaxima = ?, idMuelle = ? WHERE idBarco = ? AND OperacionesBarco = 'Aprobado'";
                     try (PreparedStatement updateStmt = CConexion.prepareStatement(query)) {
                         updateStmt.setString(1, TextoDestino.getText());
                         updateStmt.setInt(2, Integer.parseInt(TextoCantidad.getText()));
@@ -344,7 +348,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                         updateStmt.setInt(4, Integer.parseInt(TextoAsignarMuelle.getText()));
                         updateStmt.setInt(5, Integer.parseInt(TextoIdBarco.getText()));
                         int rowsAffected = updateStmt.executeUpdate();
-                    
+
                         if (rowsAffected > 0) {
                             JOptionPane.showMessageDialog(rootPane, "Datos actualizados correctamente");
                             mostrardatosbarco();
@@ -354,7 +358,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                         }
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se puede asignar el idMuelle al barco debido a restricciones.");
+                    JOptionPane.showMessageDialog(null, "Este muelle se encuentra ocupado, seleccione otro muelle");
                 }
             }
         } catch (SQLException e) {
@@ -376,13 +380,13 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
         this.TextoAsignarMuelle.setText(this.TablaBarcos.getValueAt(fila, 5).toString());
     }//GEN-LAST:event_TablaBarcosMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverActionPerformed
         InterfazOperadorAtraque atraque = new InterfazOperadorAtraque();
         atraque.setLocationRelativeTo(null);
-        atraque.setSize(620,430);
+        atraque.setSize(420,400);
         atraque.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotonVolverActionPerformed
 
     private void TablaMuellesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMuellesMouseClicked
         int fila = this.TablaMuelles.getSelectedRow();
@@ -400,7 +404,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                 mostrardatosmuelle();
                 limpiarentradas();
             }else{
-                JOptionPane.showMessageDialog(null, "No selecciono fila");
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila en la tabla antes de continuar");
             }
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null, "Error al actualizar datos" + e);
@@ -460,6 +464,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonActualizar;
     private javax.swing.JButton BotonAsignar;
+    private javax.swing.JButton BotonVolver;
     private javax.swing.JComboBox<String> ComboEstadoMuelle;
     private javax.swing.JTable TablaBarcos;
     private javax.swing.JTable TablaMuelles;
@@ -470,7 +475,6 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
     private javax.swing.JTextField TextoEstado;
     private javax.swing.JTextField TextoIdBarco;
     private javax.swing.JTextField TextoIdMuelle;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -528,7 +532,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                 modelo.addRow(data);
             }
         } catch(SQLException e){
-            System.out.println("Error al mostrar Datos " + e);
+            System.out.println("Error al mostrar datos " + e);
         }
     }
 

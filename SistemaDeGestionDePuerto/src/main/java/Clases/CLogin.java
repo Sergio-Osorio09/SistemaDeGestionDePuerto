@@ -40,7 +40,7 @@ public class CLogin {
                    case "OperadorAtraque":
                        InterfazOperadorAtraque interfazAtraque = new InterfazOperadorAtraque();
                        interfazAtraque.setLocationRelativeTo(null);
-                       interfazAtraque.setSize(620,430);
+                       interfazAtraque.setSize(420,400);
                        interfazAtraque.setVisible(true);
                        break;
                    case "OperadorEmbarque":
