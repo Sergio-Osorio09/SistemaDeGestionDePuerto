@@ -7,6 +7,7 @@ package com.mycompany.sistemadegestiondepuerto;
 import VentanasAdmin.CRUDbarcos;
 import VentanasAdmin.CRUDusuario;
 import VentanasAdmin.VisualUsuarios;
+import VentanasAdmin.CRUDcontenedor;
 
 
 /**
@@ -60,7 +61,7 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
             }
         });
 
-        btnG_contenedores.setText("BARCOS");
+        btnG_contenedores.setText("CONTENEDORES");
         btnG_contenedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnG_contenedoresActionPerformed(evt);
@@ -171,7 +172,9 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_btnG_barcosActionPerformed
 
     private void btnG_contenedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnG_contenedoresActionPerformed
-        // TODO add your handling code here:
+        CRUDcontenedor d = new CRUDcontenedor();
+        d.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnG_contenedoresActionPerformed
 
     /**

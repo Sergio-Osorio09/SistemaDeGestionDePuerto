@@ -98,6 +98,7 @@ public class CRUDbarcos extends javax.swing.JFrame {
         combooperacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccionar-", "Aprobado", "Finalizado" }));
 
         txtidmuelle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID MUELLE", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        txtidmuelle.setEnabled(false);
 
         btnregistrar.setText("REGISTRAR");
         btnregistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -263,13 +264,13 @@ public class CRUDbarcos extends javax.swing.JFrame {
 
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
         try{
-            PreparedStatement ps=CConexion.prepareStatement("INSERT INTO barco(idBarco,DestinoBarco,CantidadDescargable,CapacidadMaxima,OperacionesBarco,idMuelle) VALUES(?,?,?,?,?,?)");
+            PreparedStatement ps=CConexion.prepareStatement("INSERT INTO barco(idBarco,DestinoBarco,CantidadDescargable,CapacidadMaxima,OperacionesBarco) VALUES(?,?,?,?,?)"); //idMuelle eliminado
             ps.setString(1, txtid.getText());
             ps.setString(2, txtdestino.getText());
             ps.setString(3, txtcantidaddescar.getText());
             ps.setString(4, txtcanpacidadmax.getText());
             ps.setString(5, combooperacion.getSelectedItem().toString());
-            ps.setString(6, txtidmuelle.getText());
+            //ps.setString(6, txtidmuelle.getText());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
             mostrardatos();
