@@ -18,15 +18,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author SERGIO
  */
-public class CRUDcontenedor extends javax.swing.JFrame {
+public class CRUDmuelle extends javax.swing.JFrame {
     
     CConexion con=new CConexion();
     Connection CConexion=con.estableceConexion();
 
     /**
-     * Creates new form CRUDcontenedor
+     * Creates new form CRUDmuelle
      */
-    public CRUDcontenedor() {
+    public CRUDmuelle() {
         initComponents();
         mostrardatos();
     }
@@ -45,15 +45,14 @@ public class CRUDcontenedor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtid = new javax.swing.JTextField();
-        txtpropietario = new javax.swing.JTextField();
-        txtdestino = new javax.swing.JTextField();
-        combotipocarga = new javax.swing.JComboBox<>();
         btnregistrar = new javax.swing.JButton();
         btnactualizar = new javax.swing.JButton();
+        comboestado = new javax.swing.JComboBox<>();
         btnsalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtabledatos3 = new javax.swing.JTable();
+        jtabledatos4 = new javax.swing.JTable();
 
         jMenuItem1.setText("Eliminar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,23 +64,16 @@ public class CRUDcontenedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONTENEDORES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "REGISTRO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GESTION DE MUELLES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel2MouseClicked(evt);
+                jPanel1MouseClicked(evt);
             }
         });
 
-        txtid.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        txtpropietario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROPIETARIO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-
-        txtdestino.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DESTINO", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-
-        combotipocarga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccionar-", "ProductosCongelados", "ProductosSinCongelar", "ProductoQuimicos", "ProductosGranel", "ProductosGenericos" }));
-        combotipocarga.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TIPO DE CARGA", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        txtid.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID MUELLE", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         btnregistrar.setText("REGISTRAR");
         btnregistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +89,9 @@ public class CRUDcontenedor extends javax.swing.JFrame {
             }
         });
 
+        comboestado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccionar-", "Disponible", "No Disponible" }));
+        comboestado.setBorder(javax.swing.BorderFactory.createTitledBorder("ESTADO"));
+
         btnsalir.setText("SALIR");
         btnsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,52 +104,41 @@ public class CRUDcontenedor extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(combotipocarga, 0, 205, Short.MAX_VALUE)
-                                .addComponent(txtid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtpropietario, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtdestino, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(comboestado, javax.swing.GroupLayout.Alignment.LEADING, 0, 119, Short.MAX_VALUE)
+                            .addComponent(txtid, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtpropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboestado, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtdestino, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnregistrar)
                 .addGap(18, 18, 18)
-                .addComponent(combotipocarga, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnactualizar)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addComponent(btnsalir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LISTA DE CONTENEDORES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel3MouseClicked(evt);
-            }
-        });
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jtabledatos3.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setText("LISTADO DE MUELLES");
+
+        jtabledatos4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -165,14 +149,13 @@ public class CRUDcontenedor extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtabledatos3.setComponentPopupMenu(jPopupMenu1);
-        jtabledatos3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jtabledatos3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtabledatos4.setComponentPopupMenu(jPopupMenu1);
+        jtabledatos4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtabledatos3MouseClicked(evt);
+                jtabledatos4MouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtabledatos3);
+        jScrollPane1.setViewportView(jtabledatos4);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -180,15 +163,21 @@ public class CRUDcontenedor extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 161, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -204,12 +193,12 @@ public class CRUDcontenedor extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -234,11 +223,9 @@ public class CRUDcontenedor extends javax.swing.JFrame {
 
     private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
         try{
-            PreparedStatement ps=CConexion.prepareStatement("INSERT INTO contenedor(idContenedor,TipoDeCarga,DestinoContenedor,propietarioContenedor) VALUES(?,?,?,?)");
+            PreparedStatement ps=CConexion.prepareStatement("INSERT INTO muelle(idMuelle,EstadoDeMuelle) VALUES(?,?)");
             ps.setString(1, txtid.getText());
-            ps.setString(2, combotipocarga.getSelectedItem().toString());            
-            ps.setString(3, txtdestino.getText());
-            ps.setString(4, txtpropietario.getText());
+            ps.setString(2, comboestado.getSelectedItem().toString());            
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
             mostrardatos();
@@ -252,7 +239,7 @@ public class CRUDcontenedor extends javax.swing.JFrame {
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
         try{
             PreparedStatement ps=CConexion.prepareStatement
-        ("Update contenedor set TipoDeCarga='"+combotipocarga.getSelectedItem()+"',DestinoContenedor='"+txtdestino.getText()+"',propietarioContenedor='"+txtpropietario.getText()+"' where idContenedor='"+txtid.getText()+"'");
+        ("Update muelle set EstadoDeMuelle='"+comboestado.getSelectedItem()+"' where idMuelle='"+txtid.getText()+"'");
             int indice=ps.executeUpdate();
             
             if(indice>0){
@@ -267,26 +254,18 @@ public class CRUDcontenedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnactualizarActionPerformed
 
-    private void jtabledatos3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabledatos3MouseClicked
+    private void jtabledatos4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabledatos4MouseClicked
         btnregistrar.setEnabled(false);
         btnactualizar.setEnabled(true);
-        int fila=this.jtabledatos3.getSelectedRow();
-        this.combotipocarga.setSelectedItem(this.jtabledatos3.getValueAt(fila, 1).toString());
-        this.txtid.setText(this.jtabledatos3.getValueAt(fila, 0).toString());
-        this.txtdestino.setText(this.jtabledatos3.getValueAt(fila, 2).toString());
-        this.txtpropietario.setText(this.jtabledatos3.getValueAt(fila, 3).toString());
-    }//GEN-LAST:event_jtabledatos3MouseClicked
-
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        InterfazAdministradorSistema salir = new InterfazAdministradorSistema();
-        salir.setVisible(true);
-        this.dispose(); 
-    }//GEN-LAST:event_btnsalirActionPerformed
+        int fila=this.jtabledatos4.getSelectedRow();
+        this.comboestado.setSelectedItem(this.jtabledatos4.getValueAt(fila, 1).toString());
+        this.txtid.setText(this.jtabledatos4.getValueAt(fila, 0).toString());
+    }//GEN-LAST:event_jtabledatos4MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if(JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar el contenedor","Salir",JOptionPane.YES_NO_CANCEL_OPTION)==0){
+        if(JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar muelle","Salir",JOptionPane.YES_NO_CANCEL_OPTION)==0){
         try{
-            PreparedStatement ps=CConexion.prepareStatement("DELETE FROM contenedor where idContenedor='"+txtid.getText()+"'");
+            PreparedStatement ps=CConexion.prepareStatement("DELETE FROM muelle where idMuelle='"+txtid.getText()+"'");
         int indice=ps.executeUpdate();
         if(indice>0){
             mostrardatos();
@@ -299,17 +278,17 @@ public class CRUDcontenedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         btnactualizar.setEnabled(false);
         btnregistrar.setEnabled(true);
         limpiarentradas();
-    }//GEN-LAST:event_jPanel3MouseClicked
+    }//GEN-LAST:event_jPanel1MouseClicked
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        btnactualizar.setEnabled(false);
-        btnregistrar.setEnabled(true);
-        limpiarentradas();
-    }//GEN-LAST:event_jPanel2MouseClicked
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+        InterfazAdministradorSistema salir = new InterfazAdministradorSistema();
+        salir.setVisible(true);
+        this.dispose(); 
+    }//GEN-LAST:event_btnsalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,20 +307,20 @@ public class CRUDcontenedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CRUDcontenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CRUDmuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CRUDcontenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CRUDmuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CRUDcontenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CRUDmuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CRUDcontenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CRUDmuelle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CRUDcontenedor().setVisible(true);
+                new CRUDmuelle().setVisible(true);
             }
         });
     }
@@ -350,28 +329,25 @@ public class CRUDcontenedor extends javax.swing.JFrame {
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnregistrar;
     private javax.swing.JButton btnsalir;
-    private javax.swing.JComboBox<String> combotipocarga;
+    private javax.swing.JComboBox<String> comboestado;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jtabledatos3;
-    private javax.swing.JTextField txtdestino;
+    private javax.swing.JTable jtabledatos4;
     private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtpropietario;
     // End of variables declaration//GEN-END:variables
 
     private void mostrardatos() {
         DefaultTableModel modelo=new DefaultTableModel();
         modelo.addColumn("ID CONTENEDOR");
-        modelo.addColumn("TIPO DE CARGA");
-        modelo.addColumn("DESTINO");
-        modelo.addColumn("PROPIETARIO");
-        jtabledatos3.setModel(modelo);
-        String consultasql="select * from contenedor";
-        String data[]=new String[5];
+        modelo.addColumn("ESTADO DE MUELLE");
+        jtabledatos4.setModel(modelo);
+        String consultasql="select * from muelle";
+        String data[]=new String[2];
         
         Statement st;
         try{
@@ -380,8 +356,6 @@ public class CRUDcontenedor extends javax.swing.JFrame {
             while(rs.next()){
                 data[0]=rs.getString(1);
                 data[1]=rs.getString(2);
-                data[2]=rs.getString(5);
-                data[3]=rs.getString(6);
                 modelo.addRow(data);
             }
         } catch(SQLException e){
@@ -390,9 +364,7 @@ public class CRUDcontenedor extends javax.swing.JFrame {
     }
 
     private void limpiarentradas() {
-        combotipocarga.setSelectedIndex(0);
+        comboestado.setSelectedIndex(0);
         txtid.setText("");
-        txtpropietario.setText("");
-        txtdestino.setText("");
     }
 }

@@ -8,6 +8,7 @@ import VentanasAdmin.CRUDbarcos;
 import VentanasAdmin.CRUDusuario;
 import VentanasAdmin.VisualUsuarios;
 import VentanasAdmin.CRUDcontenedor;
+import VentanasAdmin.CRUDmuelle;
 
 
 /**
@@ -37,6 +38,7 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
         tbnG_usuario = new javax.swing.JButton();
         btnG_barcos = new javax.swing.JButton();
         btnG_contenedores = new javax.swing.JButton();
+        btnG_contenedores1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         CerrarSesion = new javax.swing.JMenuItem();
@@ -68,6 +70,13 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
             }
         });
 
+        btnG_contenedores1.setText("MUELLES");
+        btnG_contenedores1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnG_contenedores1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -75,6 +84,7 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(100, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnG_contenedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnG_contenedores, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnG_barcos, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tbnG_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -89,7 +99,9 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
                 .addComponent(btnG_barcos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnG_contenedores, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnG_contenedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -105,7 +117,7 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 314, Short.MAX_VALUE))
+                .addGap(0, 259, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Inicio");
@@ -177,6 +189,12 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnG_contenedoresActionPerformed
 
+    private void btnG_contenedores1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnG_contenedores1ActionPerformed
+        CRUDmuelle d = new CRUDmuelle();
+        d.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnG_contenedores1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +234,7 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
     private javax.swing.JMenuItem CerrarSesion;
     private javax.swing.JButton btnG_barcos;
     private javax.swing.JButton btnG_contenedores;
+    private javax.swing.JButton btnG_contenedores1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
