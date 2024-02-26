@@ -4,17 +4,26 @@
  */
 package VentanasEmbarque;
 
+import com.mycompany.sistemadegestiondepuerto.InterfazOperadorEmbarque;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class GestionarLaytime extends javax.swing.JFrame {
-
+    DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form GestionarLaytime
      */
     public GestionarLaytime() {
         initComponents();
+        mostrarDatosReporte();
+        BotonIngresarTiempo.setEnabled(false);      
     }
 
     /**
@@ -26,21 +35,209 @@ public class GestionarLaytime extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PanelPrincipal = new javax.swing.JPanel();
+        PanelReportes = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaReportes = new javax.swing.JTable();
+        BotonActualizarReportes = new javax.swing.JButton();
+        PanelOperaciones = new javax.swing.JPanel();
+        textoIDReporte = new javax.swing.JTextField();
+        selecTiempoEmbarque = new javax.swing.JComboBox<>();
+        BotonIngresarTiempo = new javax.swing.JButton();
+        BotonVolverMenu = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        PanelPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "GESTIONAR LAYTIME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
+
+        PanelReportes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "LISTA DE REPORTES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
+        TablaReportes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TablaReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaReportesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TablaReportes);
+
+        BotonActualizarReportes.setText("Actualizar Reportes");
+        BotonActualizarReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonActualizarReportesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelReportesLayout = new javax.swing.GroupLayout(PanelReportes);
+        PanelReportes.setLayout(PanelReportesLayout);
+        PanelReportesLayout.setHorizontalGroup(
+            PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelReportesLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelReportesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonActualizarReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(289, 289, 289))
+        );
+        PanelReportesLayout.setVerticalGroup(
+            PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelReportesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(BotonActualizarReportes)
+                .addGap(122, 122, 122))
+        );
+
+        PanelOperaciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "OPERACIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
+        textoIDReporte.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "IDReporte", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+
+        selecTiempoEmbarque.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1 Hora", "2 Horas", "3 Horas", "4 Horas", "5 Horas", "6 Horas", "7 Horas", "8 Horas" }));
+        selecTiempoEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "TiempoEmbarque", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+
+        BotonIngresarTiempo.setText("Ingresar tiempo");
+        BotonIngresarTiempo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIngresarTiempoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelOperacionesLayout = new javax.swing.GroupLayout(PanelOperaciones);
+        PanelOperaciones.setLayout(PanelOperacionesLayout);
+        PanelOperacionesLayout.setHorizontalGroup(
+            PanelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelOperacionesLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(PanelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textoIDReporte)
+                    .addComponent(selecTiempoEmbarque, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonIngresarTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        PanelOperacionesLayout.setVerticalGroup(
+            PanelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelOperacionesLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(textoIDReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(selecTiempoEmbarque, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BotonIngresarTiempo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        BotonVolverMenu.setText("Volver al Menu");
+        BotonVolverMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonVolverMenuActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
+        PanelPrincipal.setLayout(PanelPrincipalLayout);
+        PanelPrincipalLayout.setHorizontalGroup(
+            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(PanelOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(PanelReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(396, 396, 396))
+        );
+        PanelPrincipalLayout.setVerticalGroup(
+            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelOperaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelReportes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(BotonVolverMenu)
+                .addContainerGap(126, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverMenuActionPerformed
+        InterfazOperadorEmbarque embarque = new InterfazOperadorEmbarque();
+        embarque.setLocationRelativeTo(null);
+        embarque.setSize(590,490);
+        embarque.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BotonVolverMenuActionPerformed
+
+    private void TablaReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaReportesMouseClicked
+        BotonIngresarTiempo.setEnabled(true);
+        int fila=this.TablaReportes.getSelectedRow();       
+        this.textoIDReporte.setText(this.TablaReportes.getValueAt(fila, 0).toString());
+    }//GEN-LAST:event_TablaReportesMouseClicked
+
+    private void BotonIngresarTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarTiempoActionPerformed
+        try{
+           ResultSet rs = null;
+           PreparedStatement ps = null;
+           
+           Clases.CConexion objetoConexion = new Clases.CConexion();
+           
+           String consulta = "UPDATE reporte SET tiempoEmbarque=? WHERE idOperacion=? ";
+           ps = objetoConexion.estableceConexion().prepareStatement(consulta);
+           
+           ps.setString(1, selecTiempoEmbarque.getSelectedItem().toString());
+           ps.setString(2, textoIDReporte.getText());
+                                                     
+           int resultado = ps.executeUpdate();
+           
+           if (resultado > 0) {
+                JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+                /*mostrardatos();
+                limpiarentradasContenedor();
+
+                // Actualizar la cantidad actual de la zona de almacenamiento
+                actualizarCantidadActualZona(idZonaActual, idZonaNueva);*/
+                limpiarCajas();             
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
+                limpiarCajas();
+            }
+           
+          
+            
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: "+e.toString());
+        }   
+    }//GEN-LAST:event_BotonIngresarTiempoActionPerformed
+
+    private void BotonActualizarReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActualizarReportesActionPerformed
+        mostrarDatosReporte();
+    }//GEN-LAST:event_BotonActualizarReportesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +275,62 @@ public class GestionarLaytime extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonActualizarReportes;
+    private javax.swing.JButton BotonIngresarTiempo;
+    private javax.swing.JButton BotonVolverMenu;
+    private javax.swing.JPanel PanelOperaciones;
+    private javax.swing.JPanel PanelPrincipal;
+    private javax.swing.JPanel PanelReportes;
+    private javax.swing.JTable TablaReportes;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> selecTiempoEmbarque;
+    private javax.swing.JTextField textoIDReporte;
     // End of variables declaration//GEN-END:variables
+
+    private void mostrarDatosReporte() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("IDOperacion");
+        modelo.addColumn("IDUsuario");
+        modelo.addColumn("TiempoEmbarque");
+        modelo.addColumn("DestinoContenedor");
+        modelo.addColumn("ValidezCarga");
+        modelo.addColumn("CumplimientoEstibas");
+        modelo.addColumn("TipoCarga");
+        modelo.addColumn("UbicacionContenedor");
+        modelo.addColumn("UbicacionContenedor");
+        TablaReportes.setModel(modelo);
+        
+        try{
+           ResultSet rs = null;
+           PreparedStatement ps = null;
+           
+           Clases.CConexion objetoConexion = new Clases.CConexion();
+           
+           String consulta = "select * from reporte";
+           ps = objetoConexion.estableceConexion().prepareStatement(consulta);
+                                                     
+           rs = ps.executeQuery();
+                    
+           // Obtén el número de columnas desde el ResultSet
+            ResultSetMetaData metaData = rs.getMetaData();
+            int numColumnas = metaData.getColumnCount();
+            
+            // Utiliza un arreglo dinámico para almacenar los datos
+            String[] data = new String[numColumnas];
+                      
+            while(rs.next()){            
+                for (int i = 0; i < numColumnas; i++) {
+                   data[i] = rs.getString(i + 1); // Indices comienzan desde 1 en ResultSet
+                }
+                modelo.addRow(data);
+            }          
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: "+e.toString());
+        }   
+    }
+    
+    private void limpiarCajas() {
+       selecTiempoEmbarque.setSelectedIndex(0);
+       textoIDReporte.setText(null); 
+    }  
 }

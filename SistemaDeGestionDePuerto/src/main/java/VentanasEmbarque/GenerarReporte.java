@@ -4,17 +4,38 @@
  */
 package VentanasEmbarque;
 
+import com.mycompany.sistemadegestiondepuerto.InterfazOperadorEmbarque;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class GenerarReporte extends javax.swing.JFrame {
-
+    DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form GenerarReporte
      */
     public GenerarReporte() {
         initComponents();
+        mostrarDatosBarco();
+        BotonGenerarReporte.setEnabled(false);
+        
+        modelo.addColumn("IDOperacion");
+        modelo.addColumn("IDUsuario");
+        modelo.addColumn("tiempoEmbarque");
+        modelo.addColumn("DestinoContenedor");
+        modelo.addColumn("ValidezCarga");
+        modelo.addColumn("CumplimientoEstribas");
+        modelo.addColumn("TipoCarga");
+        modelo.addColumn("UbicacionContenedor");
+        modelo.addColumn("idContenedor");       
+        TablaReportes.setModel(modelo);
+        actualizarDatosReportes();
     }
 
     /**
@@ -26,21 +47,286 @@ public class GenerarReporte extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PanelPrincipal = new javax.swing.JPanel();
+        PanelOperaciones = new javax.swing.JPanel();
+        textoOperacion = new javax.swing.JTextField();
+        textoUsuario = new javax.swing.JTextField();
+        textoDestinoCont = new javax.swing.JTextField();
+        textoValidezCarga = new javax.swing.JTextField();
+        textoTipoCarga = new javax.swing.JTextField();
+        textoUbicacionContenedor = new javax.swing.JTextField();
+        BotonGenerarReporte = new javax.swing.JButton();
+        textoEstribas = new javax.swing.JComboBox<>();
+        PanelContenedores = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaContenedores = new javax.swing.JTable();
+        PanelReportes = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaReportes = new javax.swing.JTable();
+        BotonActualizarReportes = new javax.swing.JButton();
+        BotonIRMenu = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        PanelPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "GENERAR REPORTE DE OPERACIONES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
+
+        PanelOperaciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "OPERACIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
+        textoOperacion.setBorder(javax.swing.BorderFactory.createTitledBorder("IDOperacion"));
+
+        textoUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder("IDUsuario"));
+
+        textoDestinoCont.setBorder(javax.swing.BorderFactory.createTitledBorder("DestinoContenedor"));
+
+        textoValidezCarga.setBorder(javax.swing.BorderFactory.createTitledBorder("ValidezCarga"));
+
+        textoTipoCarga.setBorder(javax.swing.BorderFactory.createTitledBorder("TipoCarga"));
+
+        textoUbicacionContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder("UbicacionContenedor"));
+
+        BotonGenerarReporte.setText("Generar Reporte");
+        BotonGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGenerarReporteActionPerformed(evt);
+            }
+        });
+
+        textoEstribas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Sí", "No" }));
+        textoEstribas.setBorder(javax.swing.BorderFactory.createTitledBorder("CumplimientoEstribas"));
+
+        javax.swing.GroupLayout PanelOperacionesLayout = new javax.swing.GroupLayout(PanelOperaciones);
+        PanelOperaciones.setLayout(PanelOperacionesLayout);
+        PanelOperacionesLayout.setHorizontalGroup(
+            PanelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelOperacionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(BotonGenerarReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textoValidezCarga, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(textoOperacion, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoTipoCarga, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(textoUbicacionContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(textoDestinoCont, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(textoEstribas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
+        PanelOperacionesLayout.setVerticalGroup(
+            PanelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelOperacionesLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(textoOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(textoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoTipoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(textoUbicacionContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoValidezCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoDestinoCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(textoEstribas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BotonGenerarReporte)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        PanelContenedores.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "CONTENEDORES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
+        TablaContenedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TablaContenedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaContenedoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TablaContenedores);
+
+        javax.swing.GroupLayout PanelContenedoresLayout = new javax.swing.GroupLayout(PanelContenedores);
+        PanelContenedores.setLayout(PanelContenedoresLayout);
+        PanelContenedoresLayout.setHorizontalGroup(
+            PanelContenedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelContenedoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 977, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        PanelContenedoresLayout.setVerticalGroup(
+            PanelContenedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelContenedoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        PanelReportes.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "REPORTES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
+        TablaReportes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(TablaReportes);
+
+        BotonActualizarReportes.setText("Actualizar Reportes");
+        BotonActualizarReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonActualizarReportesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelReportesLayout = new javax.swing.GroupLayout(PanelReportes);
+        PanelReportes.setLayout(PanelReportesLayout);
+        PanelReportesLayout.setHorizontalGroup(
+            PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelReportesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonActualizarReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(451, 451, 451))
+            .addGroup(PanelReportesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        PanelReportesLayout.setVerticalGroup(
+            PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelReportesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(BotonActualizarReportes)
+                .addGap(26, 26, 26))
+        );
+
+        BotonIRMenu.setText("Volver al Menu");
+        BotonIRMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIRMenuActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
+        PanelPrincipal.setLayout(PanelPrincipalLayout);
+        PanelPrincipalLayout.setHorizontalGroup(
+            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(BotonIRMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PanelOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelContenedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 13, Short.MAX_VALUE))
+        );
+        PanelPrincipalLayout.setVerticalGroup(
+            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(PanelOperaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(BotonIRMenu))
+                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(PanelContenedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(PanelReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonIRMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIRMenuActionPerformed
+        InterfazOperadorEmbarque embarque = new InterfazOperadorEmbarque();
+        embarque.setLocationRelativeTo(null);
+        embarque.setSize(590,490);
+        embarque.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BotonIRMenuActionPerformed
+
+    private void TablaContenedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaContenedoresMouseClicked
+        BotonGenerarReporte.setEnabled(true);
+        int fila=this.TablaContenedores.getSelectedRow();       
+        this.textoOperacion.setText(this.TablaContenedores.getValueAt(fila, 0).toString());
+        this.textoTipoCarga.setText(this.TablaContenedores.getValueAt(fila, 1).toString());
+        this.textoUbicacionContenedor.setText(this.TablaContenedores.getValueAt(fila, 2).toString());
+        this.textoValidezCarga.setText(this.TablaContenedores.getValueAt(fila, 3).toString());
+        this.textoDestinoCont.setText(this.TablaContenedores.getValueAt(fila, 4).toString());
+        textoUsuario.setText("200");
+    }//GEN-LAST:event_TablaContenedoresMouseClicked
+
+    private void BotonGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGenerarReporteActionPerformed
+        try{
+           ResultSet rs = null;
+           PreparedStatement ps = null;
+           
+           Clases.CConexion objetoConexion = new Clases.CConexion();
+           
+           String consulta = "insert into reporte (idContenedor,idUsuario,DestinoContenedor,ValidezDeCarga,CumplirEstibas,TipoDeCarga,UbicacionContenedor) values (?,?,?,?,?,?,?)";
+           ps = objetoConexion.estableceConexion().prepareStatement(consulta);
+           
+           ps.setString(1, textoOperacion.getText());
+           ps.setString(2, textoUsuario.getText());
+           ps.setString(3, textoDestinoCont.getText());
+           ps.setString(4, textoValidezCarga.getText());
+           ps.setString(5, textoEstribas.getSelectedItem().toString());
+           ps.setString(6, textoTipoCarga.getText());
+           ps.setString(7, textoUbicacionContenedor.getText());
+                                                     
+           int resultado = ps.executeUpdate();
+           
+           if (resultado > 0) {
+                JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+                /*mostrardatos();
+                limpiarentradasContenedor();
+
+                // Actualizar la cantidad actual de la zona de almacenamiento
+                actualizarCantidadActualZona(idZonaActual, idZonaNueva);*/
+                limpiarCajas();             
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
+                limpiarCajas();
+            }         
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: "+e.toString());
+        }     
+    }//GEN-LAST:event_BotonGenerarReporteActionPerformed
+
+    private void BotonActualizarReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActualizarReportesActionPerformed
+        actualizarDatosReportes();
+    }//GEN-LAST:event_BotonActualizarReportesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +364,101 @@ public class GenerarReporte extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonActualizarReportes;
+    private javax.swing.JButton BotonGenerarReporte;
+    private javax.swing.JButton BotonIRMenu;
+    private javax.swing.JPanel PanelContenedores;
+    private javax.swing.JPanel PanelOperaciones;
+    private javax.swing.JPanel PanelPrincipal;
+    private javax.swing.JPanel PanelReportes;
+    private javax.swing.JTable TablaContenedores;
+    private javax.swing.JTable TablaReportes;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField textoDestinoCont;
+    private javax.swing.JComboBox<String> textoEstribas;
+    private javax.swing.JTextField textoOperacion;
+    private javax.swing.JTextField textoTipoCarga;
+    private javax.swing.JTextField textoUbicacionContenedor;
+    private javax.swing.JTextField textoUsuario;
+    private javax.swing.JTextField textoValidezCarga;
     // End of variables declaration//GEN-END:variables
+
+    
+    private void mostrarDatosBarco() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("ID Contenedor");
+        modelo.addColumn("Tipo de Carga");
+        modelo.addColumn("Ubicacion");
+        modelo.addColumn("Validez de carga");
+        modelo.addColumn("Destino");
+        modelo.addColumn("Propietario");
+        modelo.addColumn("ID Zona Almacenamiento");       
+        TablaContenedores.setModel(modelo);
+        
+        try{
+           ResultSet rs = null;
+           PreparedStatement ps = null;
+           
+           Clases.CConexion objetoConexion = new Clases.CConexion();
+           
+           String consulta = "select * from contenedor WHERE DestinoContenedor = 'Peru'";
+           ps = objetoConexion.estableceConexion().prepareStatement(consulta);
+                                                     
+           rs = ps.executeQuery();
+           
+           // Obtén el número de columnas desde el ResultSet
+            ResultSetMetaData metaData = rs.getMetaData();
+            int numColumnas = metaData.getColumnCount();
+            
+            // Utiliza un arreglo dinámico para almacenar los datos
+            String[] data = new String[numColumnas];
+                      
+            while(rs.next()){            
+                for (int i = 0; i < numColumnas; i++) {
+                   data[i] = rs.getString(i + 1); // Indices comienzan desde 1 en ResultSet
+                }
+                modelo.addRow(data);
+            }          
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: "+e.toString());
+        }   
+    }
+
+    private void limpiarCajas() {
+        /*
+       ElegirValidacion.setSelectedIndex(0);
+       IngresarIDBarco.setText(null); 
+        */
+    }
+
+    private void actualizarDatosReportes() {     
+        try{
+           ResultSet rs = null;
+           PreparedStatement ps = null;
+           
+           Clases.CConexion objetoConexion = new Clases.CConexion();
+           
+           String consulta = "select * from reporte";
+           ps = objetoConexion.estableceConexion().prepareStatement(consulta);
+                                                     
+           rs = ps.executeQuery();
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int numColumnas = metaData.getColumnCount();
+            
+            // Utiliza un arreglo dinámico para almacenar los datos
+            String[] data = new String[numColumnas];
+                      
+            while(rs.next()){             
+                for (int i = 0; i < numColumnas; i++) {
+                   data[i] = rs.getString(i + 1); // Indices comienzan desde 1 en ResultSet
+                }
+                modelo.addRow(data);
+            }          
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: "+e.toString());
+        }   
+    }
 }

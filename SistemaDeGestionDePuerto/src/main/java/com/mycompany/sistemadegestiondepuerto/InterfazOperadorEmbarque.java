@@ -64,7 +64,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        OperadorEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "OPERADOR EMBARQUE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
+        OperadorEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "OPERADOR DE EMBARQUE / DESEMBARQUE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
 
         IngresarLaytime.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Gestionar Laytime", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -241,7 +241,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
     private void BotonLaytimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLaytimeActionPerformed
         GestionarLaytime laytime = new GestionarLaytime();
         laytime.setLocationRelativeTo(null);
-        laytime.setSize(800,500);
+        laytime.setSize(1000,530);
         laytime.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_BotonLaytimeActionPerformed
@@ -257,7 +257,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
     private void BotonDesembarqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDesembarqueActionPerformed
         ValidarDesembarque desembarque = new ValidarDesembarque();
         desembarque.setLocationRelativeTo(null);
-        desembarque.setSize(1000,600);
+        desembarque.setSize(1000,400);
         desembarque.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_BotonDesembarqueActionPerformed
@@ -265,7 +265,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
     private void BotonReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReporteActionPerformed
         GenerarReporte reporte = new GenerarReporte();
         reporte.setLocationRelativeTo(null);
-        reporte.setSize(800,500);
+        reporte.setSize(1300,700);
         reporte.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_BotonReporteActionPerformed

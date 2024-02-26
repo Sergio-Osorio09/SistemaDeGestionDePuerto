@@ -16,13 +16,16 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class ValidarDesembarque extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form ValidarDesembarque
      */
     public ValidarDesembarque() {
         initComponents();
         mostrarDatosBarco();
+        BotonValidarCargas.setEnabled(false);
+        
+        
     }
 
     /**
@@ -37,65 +40,65 @@ public class ValidarDesembarque extends javax.swing.JFrame {
         PanelPrincipal = new javax.swing.JPanel();
         PanelOpciones = new javax.swing.JPanel();
         IngresarIDBarco = new javax.swing.JTextField();
-        BotonVerContenedores = new javax.swing.JButton();
         BotonValidarCargas = new javax.swing.JButton();
+        ElegirValidacion = new javax.swing.JComboBox<>();
         PanelBarcos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaBarcos = new javax.swing.JTable();
-        PanelSalir = new javax.swing.JPanel();
+        TablaContenedoresDes = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         BotonVolverMenu = new javax.swing.JButton();
-        PanelContenedores = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TablaContenedores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PanelPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "VERIFICAR Y COMPROBAR CONTENEDORES DE IMPORTACIÓN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
 
-        PanelOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Opciones de Verificación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+        PanelOpciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "OPERACIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
-        IngresarIDBarco.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese el ID del Barco"));
+        IngresarIDBarco.setBorder(javax.swing.BorderFactory.createTitledBorder("ID Contenedor"));
         IngresarIDBarco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IngresarIDBarcoActionPerformed(evt);
             }
         });
 
-        BotonVerContenedores.setText("Ver contenedores");
+        BotonValidarCargas.setText("Validar Contenedor");
+        BotonValidarCargas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonValidarCargasActionPerformed(evt);
+            }
+        });
 
-        BotonValidarCargas.setText("Validar cargas");
+        ElegirValidacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Válido", "No válido" }));
+        ElegirValidacion.setBorder(javax.swing.BorderFactory.createTitledBorder("Validar Contenedor"));
 
         javax.swing.GroupLayout PanelOpcionesLayout = new javax.swing.GroupLayout(PanelOpciones);
         PanelOpciones.setLayout(PanelOpcionesLayout);
         PanelOpcionesLayout.setHorizontalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BotonVerContenedores, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                            .addComponent(BotonValidarCargas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(IngresarIDBarco, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(BotonValidarCargas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(ElegirValidacion, 0, 146, Short.MAX_VALUE)
+                        .addComponent(IngresarIDBarco)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         PanelOpcionesLayout.setVerticalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(IngresarIDBarco, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(BotonVerContenedores)
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
+                .addComponent(IngresarIDBarco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ElegirValidacion)
+                .addGap(18, 18, 18)
                 .addComponent(BotonValidarCargas)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
-        PanelBarcos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Barcos Atracados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+        PanelBarcos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "CONTENEDORES DE BARCOS ATRACADOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
-        TablaBarcos.setModel(new javax.swing.table.DefaultTableModel(
+        TablaContenedoresDes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,26 +109,43 @@ public class ValidarDesembarque extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(TablaBarcos);
+        TablaContenedoresDes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaContenedoresDesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TablaContenedoresDes);
+
+        jButton1.setText("Actualizar Contenedores");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelBarcosLayout = new javax.swing.GroupLayout(PanelBarcos);
         PanelBarcos.setLayout(PanelBarcosLayout);
         PanelBarcosLayout.setHorizontalGroup(
             PanelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBarcosLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(PanelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelBarcosLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelBarcosLayout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         PanelBarcosLayout.setVerticalGroup(
             PanelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBarcosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(278, 278, 278))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(221, 221, 221))
         );
-
-        PanelSalir.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Ir al Menu Operador de Embarque", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
         BotonVolverMenu.setText("Volver al menu");
         BotonVolverMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -134,87 +154,31 @@ public class ValidarDesembarque extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout PanelSalirLayout = new javax.swing.GroupLayout(PanelSalir);
-        PanelSalir.setLayout(PanelSalirLayout);
-        PanelSalirLayout.setHorizontalGroup(
-            PanelSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelSalirLayout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addComponent(BotonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
-        );
-        PanelSalirLayout.setVerticalGroup(
-            PanelSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSalirLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(BotonVolverMenu)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        PanelContenedores.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Ver Contenedores de Barco Seleccionado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
-
-        TablaContenedores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(TablaContenedores);
-
-        javax.swing.GroupLayout PanelContenedoresLayout = new javax.swing.GroupLayout(PanelContenedores);
-        PanelContenedores.setLayout(PanelContenedoresLayout);
-        PanelContenedoresLayout.setHorizontalGroup(
-            PanelContenedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelContenedoresLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        PanelContenedoresLayout.setVerticalGroup(
-            PanelContenedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelContenedoresLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
         PanelPrincipal.setLayout(PanelPrincipalLayout);
         PanelPrincipalLayout.setHorizontalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(PanelSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelContenedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(PanelBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(418, 418, 418))
         );
         PanelPrincipalLayout.setVerticalGroup(
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addComponent(PanelBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(PanelContenedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelPrincipalLayout.createSequentialGroup()
-                        .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(PanelSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(124, 124, Short.MAX_VALUE))
+                    .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(BotonVolverMenu)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,9 +189,7 @@ public class ValidarDesembarque extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -244,6 +206,51 @@ public class ValidarDesembarque extends javax.swing.JFrame {
         embarque.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BotonVolverMenuActionPerformed
+
+    private void TablaContenedoresDesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaContenedoresDesMouseClicked
+        BotonValidarCargas.setEnabled(true);
+        int fila=this.TablaContenedoresDes.getSelectedRow();       
+        this.IngresarIDBarco.setText(this.TablaContenedoresDes.getValueAt(fila, 0).toString());
+    }//GEN-LAST:event_TablaContenedoresDesMouseClicked
+
+    private void BotonValidarCargasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonValidarCargasActionPerformed
+        try{
+           ResultSet rs = null;
+           PreparedStatement ps = null;
+           
+           Clases.CConexion objetoConexion = new Clases.CConexion();
+           
+           String consulta = "UPDATE contenedor SET validezDeCarga=? WHERE idContenedor=? ";
+           ps = objetoConexion.estableceConexion().prepareStatement(consulta);
+           
+           ps.setString(1, ElegirValidacion.getSelectedItem().toString());
+           ps.setString(2, IngresarIDBarco.getText());
+                                                     
+           int resultado = ps.executeUpdate();
+           
+           if (resultado > 0) {
+                JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+                /*mostrardatos();
+                limpiarentradasContenedor();
+
+                // Actualizar la cantidad actual de la zona de almacenamiento
+                actualizarCantidadActualZona(idZonaActual, idZonaNueva);*/
+                limpiarCajas();             
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
+                limpiarCajas();
+            }
+           
+          
+            
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: "+e.toString());
+        }   
+    }//GEN-LAST:event_BotonValidarCargasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        mostrarDatosBarco();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,29 +289,28 @@ public class ValidarDesembarque extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonValidarCargas;
-    private javax.swing.JButton BotonVerContenedores;
     private javax.swing.JButton BotonVolverMenu;
+    private javax.swing.JComboBox<String> ElegirValidacion;
     private javax.swing.JTextField IngresarIDBarco;
     private javax.swing.JPanel PanelBarcos;
-    private javax.swing.JPanel PanelContenedores;
     private javax.swing.JPanel PanelOpciones;
     private javax.swing.JPanel PanelPrincipal;
-    private javax.swing.JPanel PanelSalir;
-    private javax.swing.JTable TablaBarcos;
-    private javax.swing.JTable TablaContenedores;
+    private javax.swing.JTable TablaContenedoresDes;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
     private void mostrarDatosBarco() {
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.addColumn("ID Barco");
+        modelo.addColumn("ID Contenedor");
+        modelo.addColumn("Tipo de Carga");
+        modelo.addColumn("Ubicacion");
+        modelo.addColumn("Validez de carga");
         modelo.addColumn("Destino");
-        modelo.addColumn("Cantidad descargable");
-        modelo.addColumn("Capacidad Maxima");
-        modelo.addColumn("ID Muelle");
-        TablaBarcos.setModel(modelo);
+        modelo.addColumn("Propietario");
+        modelo.addColumn("ID Zona Almacenamiento");       
+        TablaContenedoresDes.setModel(modelo);
         
         try{
            ResultSet rs = null;
@@ -312,7 +318,7 @@ public class ValidarDesembarque extends javax.swing.JFrame {
            
            Clases.CConexion objetoConexion = new Clases.CConexion();
            
-           String consulta = "select * from barco";
+           String consulta = "select * from contenedor WHERE DestinoContenedor = 'Peru' and UbicacionContenedor = 'ZonaDeEntrada'";
            ps = objetoConexion.estableceConexion().prepareStatement(consulta);
                                                      
            rs = ps.executeQuery();
@@ -344,4 +350,10 @@ public class ValidarDesembarque extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR: "+e.toString());
         }   
     }
+
+    private void limpiarCajas() {
+       ElegirValidacion.setSelectedIndex(0);
+       IngresarIDBarco.setText(null); 
+    }
+        
 }
