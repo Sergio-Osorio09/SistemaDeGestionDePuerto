@@ -362,7 +362,7 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar datos " + e);
+            JOptionPane.showMessageDialog(null, "El muelle ingresado no existe, seleccione otro muelle");
         }
     }//GEN-LAST:event_BotonAsignarActionPerformed
 
