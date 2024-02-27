@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -46,18 +48,15 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaBarcos = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        BotonAsignar = new javax.swing.JButton();
         TextoCantidad = new javax.swing.JTextField();
         TextoAsignarMuelle = new javax.swing.JTextField();
         TextoCapacidad = new javax.swing.JTextField();
         TextoDestino = new javax.swing.JTextField();
         TextoIdBarco = new javax.swing.JTextField();
         TextoEstado = new javax.swing.JTextField();
-        BotonVolver = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        TextoIdMuelle = new javax.swing.JTextField();
-        ComboEstadoMuelle = new javax.swing.JComboBox<>();
+        BotonAsignar = new javax.swing.JButton();
         BotonActualizar = new javax.swing.JButton();
+        BotonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,13 +88,13 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -132,20 +131,12 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ASIGNAR MUELLE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-
-        BotonAsignar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BotonAsignar.setText("Asignar");
-        BotonAsignar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAsignarActionPerformed(evt);
-            }
-        });
 
         TextoCantidad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cantidad Descargable", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         TextoCantidad.setEnabled(false);
@@ -174,39 +165,23 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
         TextoEstado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado de Operaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         TextoEstado.setEnabled(false);
 
-        BotonVolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BotonVolver.setText("Volver");
-        BotonVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonVolverActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TextoIdBarco, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TextoAsignarMuelle, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(TextoIdBarco, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                     .addComponent(TextoDestino))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(TextoCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(TextoCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(TextoEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(BotonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72)
-                        .addComponent(BotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(58, 58, 58)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TextoCapacidad, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addComponent(TextoCantidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TextoAsignarMuelle, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addComponent(TextoEstado))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -215,30 +190,23 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TextoEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                    .addComponent(TextoIdBarco)
-                    .addComponent(TextoDestino)
                     .addComponent(TextoCantidad)
-                    .addComponent(TextoCapacidad))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BotonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(TextoAsignarMuelle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(TextoIdBarco, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(TextoCapacidad, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(TextoDestino)
+                    .addComponent(TextoAsignarMuelle))
+                .addContainerGap())
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACTUALIZAR MUELLES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-
-        TextoIdMuelle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID Muelle", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-        TextoIdMuelle.setEnabled(false);
-
-        ComboEstadoMuelle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Disponible", "No Disponible" }));
-        ComboEstadoMuelle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado de Muelle", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        BotonAsignar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonAsignar.setText("Asignar");
+        BotonAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAsignarActionPerformed(evt);
+            }
+        });
 
         BotonActualizar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonActualizar.setText("Actualizar");
@@ -248,46 +216,34 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TextoIdMuelle)
-                    .addComponent(ComboEstadoMuelle, 0, 150, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(BotonActualizar)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(TextoIdMuelle, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(ComboEstadoMuelle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-        );
+        BotonVolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonVolver.setText("Volver");
+        BotonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BotonAsignar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(BotonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 67, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -297,11 +253,19 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(BotonAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(BotonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(BotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -390,24 +354,57 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
 
     private void TablaMuellesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMuellesMouseClicked
         int fila = this.TablaMuelles.getSelectedRow();
-        this.TextoIdMuelle.setText(this.TablaMuelles.getValueAt(fila, 0).toString());
-        this.ComboEstadoMuelle.setSelectedItem(this.TablaMuelles.getValueAt(fila, 1).toString());
     }//GEN-LAST:event_TablaMuellesMouseClicked
 
     private void BotonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActualizarActionPerformed
         try {
-            PreparedStatement ps = CConexion.prepareStatement("Update muelle set EstadoDeMuelle = '" +ComboEstadoMuelle.getSelectedItem()+ "' where idMuelle = '" +TextoIdMuelle.getText()+ "'");
-            int indice = ps.executeUpdate();
+            // Obtener los IDs de muelle y las operaciones de barco desde la tabla Barco
+            PreparedStatement psConsultaBarco = CConexion.prepareStatement("SELECT idMuelle, OperacionesBarco FROM Barco");
+            ResultSet rsConsultaBarco = psConsultaBarco.executeQuery();
 
-            if(indice>0) {
-                JOptionPane.showMessageDialog(rootPane, "Datos actualizados correctamente");
-                mostrardatosmuelle();
-                limpiarentradas();
-            }else{
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila en la tabla antes de continuar");
+            // Crear una lista para almacenar los IDs de muelle de la tabla Barco con operaciones aprobadas
+            List<Integer> idMuellesBarcoAprobados = new ArrayList<>();
+
+            // Iterar a través de los resultados y almacenar los IDs de muelle con operaciones aprobadas
+            while (rsConsultaBarco.next()) {
+                int idMuelleBarco = rsConsultaBarco.getInt("idMuelle");
+                String operacionesBarco = rsConsultaBarco.getString("OperacionesBarco");
+                if (operacionesBarco.equals("Aprobado")) {
+                    idMuellesBarcoAprobados.add(idMuelleBarco);
+                }
             }
-        }catch (SQLException e){
-            JOptionPane.showMessageDialog(null, "Error al actualizar datos" + e);
+
+            // Consultar la tabla Muelle para obtener todos los IDs de muelle
+            PreparedStatement psConsultaMuelle = CConexion.prepareStatement("SELECT idMuelle FROM Muelle");
+            ResultSet rsConsultaMuelle = psConsultaMuelle.executeQuery();
+
+            // Iterar a través de los IDs de muelle de la tabla Muelle
+            while (rsConsultaMuelle.next()) {
+                int idMuelleMuelle = rsConsultaMuelle.getInt("idMuelle");
+
+                // Verificar si el ID de muelle de la tabla Muelle está en la lista de IDs de muelle de la tabla Barco con operaciones aprobadas
+                if (idMuellesBarcoAprobados.contains(idMuelleMuelle)) {
+                    // Si el ID de muelle está presente en la tabla Barco con operaciones aprobadas, cambiar el estado del muelle a "No Disponible"
+                    PreparedStatement psCambiarEstadoMuelle = CConexion.prepareStatement("UPDATE Muelle SET EstadoDeMuelle = 'No Disponible' WHERE idMuelle = ?");
+                    psCambiarEstadoMuelle.setInt(1, idMuelleMuelle);
+                    psCambiarEstadoMuelle.executeUpdate();
+                } else {
+                    // Si el ID de muelle no está presente en la tabla Barco con operaciones aprobadas, cambiar el estado del muelle a "Disponible"
+                    PreparedStatement psCambiarEstadoMuelle = CConexion.prepareStatement("UPDATE Muelle SET EstadoDeMuelle = 'Disponible' WHERE idMuelle = ?");
+                    psCambiarEstadoMuelle.setInt(1, idMuelleMuelle);
+                    psCambiarEstadoMuelle.executeUpdate();
+                }
+            }
+
+            // Mostrar mensaje de éxito
+            JOptionPane.showMessageDialog(rootPane, "Datos actualizados correctamente");
+            mostrardatosmuelle();
+            limpiarentradas();
+
+        } catch (SQLException e) {
+            // Mostrar mensaje de error en caso de excepción
+            JOptionPane.showMessageDialog(null, "Error al actualizar datos");
+            e.printStackTrace();
         }
     }//GEN-LAST:event_BotonActualizarActionPerformed
 
@@ -465,7 +462,6 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
     private javax.swing.JButton BotonActualizar;
     private javax.swing.JButton BotonAsignar;
     private javax.swing.JButton BotonVolver;
-    private javax.swing.JComboBox<String> ComboEstadoMuelle;
     private javax.swing.JTable TablaBarcos;
     private javax.swing.JTable TablaMuelles;
     private javax.swing.JTextField TextoAsignarMuelle;
@@ -474,12 +470,10 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
     private javax.swing.JTextField TextoDestino;
     private javax.swing.JTextField TextoEstado;
     private javax.swing.JTextField TextoIdBarco;
-    private javax.swing.JTextField TextoIdMuelle;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
@@ -543,7 +537,5 @@ public class ActualizarAsignarMuelles extends javax.swing.JFrame {
         TextoCapacidad.setText("");
         TextoEstado.setText("");
         TextoAsignarMuelle.setText("");
-        TextoIdMuelle.setText("");
-        ComboEstadoMuelle.setSelectedIndex(0);
     }
 }

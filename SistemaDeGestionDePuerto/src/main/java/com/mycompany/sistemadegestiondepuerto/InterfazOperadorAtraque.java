@@ -31,9 +31,9 @@ public class InterfazOperadorAtraque extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        IngresarBarco = new javax.swing.JButton();
+        BotonAsignarMuelles = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        IngresarReporte = new javax.swing.JButton();
+        BotonHistorialBarcos = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuInicio = new javax.swing.JMenu();
         CerrarSesion = new javax.swing.JMenuItem();
@@ -44,11 +44,11 @@ public class InterfazOperadorAtraque extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actualizar y Asignar Muelles", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
-        IngresarBarco.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        IngresarBarco.setText("Ingresar");
-        IngresarBarco.addActionListener(new java.awt.event.ActionListener() {
+        BotonAsignarMuelles.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        BotonAsignarMuelles.setText("Ingresar");
+        BotonAsignarMuelles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IngresarBarcoActionPerformed(evt);
+                BotonAsignarMuellesActionPerformed(evt);
             }
         });
 
@@ -58,24 +58,24 @@ public class InterfazOperadorAtraque extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(122, 122, 122)
-                .addComponent(IngresarBarco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotonAsignarMuelles, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(IngresarBarco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotonAsignarMuelles, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Visualizar Historial de Barcos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16))); // NOI18N
 
-        IngresarReporte.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        IngresarReporte.setText("Ingresar");
-        IngresarReporte.addActionListener(new java.awt.event.ActionListener() {
+        BotonHistorialBarcos.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        BotonHistorialBarcos.setText("Ingresar");
+        BotonHistorialBarcos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IngresarReporteActionPerformed(evt);
+                BotonHistorialBarcosActionPerformed(evt);
             }
         });
 
@@ -85,14 +85,14 @@ public class InterfazOperadorAtraque extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(121, 121, 121)
-                .addComponent(IngresarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotonHistorialBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(IngresarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotonHistorialBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
 
@@ -150,13 +150,13 @@ public class InterfazOperadorAtraque extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IngresarBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarBarcoActionPerformed
+    private void BotonAsignarMuellesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAsignarMuellesActionPerformed
         ActualizarAsignarMuelles muelle = new ActualizarAsignarMuelles();
         muelle.setLocationRelativeTo(null);
-        muelle.setSize(1230,610);
+        muelle.setSize(1170,600);
         muelle.setVisible(true);
         this.dispose(); 
-    }//GEN-LAST:event_IngresarBarcoActionPerformed
+    }//GEN-LAST:event_BotonAsignarMuellesActionPerformed
 
     private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
         InterfazLogin login = new InterfazLogin();
@@ -166,13 +166,13 @@ public class InterfazOperadorAtraque extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
-    private void IngresarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarReporteActionPerformed
+    private void BotonHistorialBarcosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHistorialBarcosActionPerformed
         VisualizarHistorialBarcos reporte = new VisualizarHistorialBarcos();
         reporte.setLocationRelativeTo(null);
         reporte.setSize(910,510);
         reporte.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_IngresarReporteActionPerformed
+    }//GEN-LAST:event_BotonHistorialBarcosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,9 +210,9 @@ public class InterfazOperadorAtraque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAsignarMuelles;
+    private javax.swing.JButton BotonHistorialBarcos;
     private javax.swing.JMenuItem CerrarSesion;
-    private javax.swing.JButton IngresarBarco;
-    private javax.swing.JButton IngresarReporte;
     private javax.swing.JMenu MenuInicio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

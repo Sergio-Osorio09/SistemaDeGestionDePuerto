@@ -173,12 +173,16 @@ public class InterfazAdministradorSistema extends javax.swing.JFrame {
 
     private void tbnG_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnG_usuarioActionPerformed
         CRUDusuario d = new CRUDusuario();
+        d.setLocationRelativeTo(null);
+        d.setSize(1282,672);
         d.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_tbnG_usuarioActionPerformed
 
     private void btnG_barcosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnG_barcosActionPerformed
         CRUDbarcos d = new CRUDbarcos();
+        d.setLocationRelativeTo(null);
+        d.setSize(970,670);
         d.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnG_barcosActionPerformed

@@ -46,13 +46,13 @@ public class CLogin {
                    case "OperadorEmbarque":
                        InterfazOperadorEmbarque interfazEmbarque = new InterfazOperadorEmbarque();
                        interfazEmbarque.setLocationRelativeTo(null);
-                       interfazEmbarque.setSize(590,490);
+                       interfazEmbarque.setSize(540,480);
                        interfazEmbarque.setVisible(true);
                        break;
                    case "OperadorAlmacenamiento":
                        InterfazOperadorAlmacenamiento interfazAlmacenamiento = new InterfazOperadorAlmacenamiento();
                        interfazAlmacenamiento.setLocationRelativeTo(null);
-                       interfazAlmacenamiento.setSize(1000,600);
+                       interfazAlmacenamiento.setSize(890,490);
                        interfazAlmacenamiento.setVisible(true);
                        break;
                    case "AdministradorSistema":
