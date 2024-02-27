@@ -230,7 +230,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
     private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
         InterfazLogin login = new InterfazLogin();
         login.setLocationRelativeTo(null);
-        login.setSize(450,460);
+        login.setSize(450,490);
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CerrarSesionActionPerformed
