@@ -6,8 +6,8 @@ package com.mycompany.sistemadegestiondepuerto;
 
 import VentanasAlmacenamiento.ContenedoresExportacion;
 import VentanasAlmacenamiento.ContenedoresImportacion;
-import VentanasAlmacenamiento.ContenedorAEmbarque;
-import VentanasAlmacenamiento.ContenedorAZonaDescarga;
+import VentanasAlmacenamiento.EnviarContenedor;
+import VentanasAlmacenamiento.EnviarContenedorAEmbarque;
 import VentanasAlmacenamiento.GestionarAlmacen;
 
 /**
@@ -37,8 +37,8 @@ public class InterfazOperadorAlmacenamiento extends javax.swing.JFrame {
         ValidezContImport = new javax.swing.JButton();
         ValidezContExport = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        GenerarReporte = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        EnviarContenedor = new javax.swing.JButton();
+        EnviarAEmbarque = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         GestionarAlmacen = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -91,19 +91,19 @@ public class InterfazOperadorAlmacenamiento extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Enviar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
-        GenerarReporte.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        GenerarReporte.setText("Enviar Contenedor a Embarque");
-        GenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+        EnviarContenedor.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        EnviarContenedor.setText("Enviar Contenedor A Cliente");
+        EnviarContenedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GenerarReporteActionPerformed(evt);
+                EnviarContenedorActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("Enviar contenedor a Zona de Descarga");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        EnviarAEmbarque.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        EnviarAEmbarque.setText("Enviar Contenedor A Embarque");
+        EnviarAEmbarque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                EnviarAEmbarqueActionPerformed(evt);
             }
         });
 
@@ -111,20 +111,20 @@ public class InterfazOperadorAlmacenamiento extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(GenerarReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(53, 53, 53))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(EnviarAEmbarque, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                    .addComponent(EnviarContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(GenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(EnviarContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EnviarAEmbarque, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -143,16 +143,16 @@ public class InterfazOperadorAlmacenamiento extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(GestionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(48, 48, 48))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(34, 34, 34)
                 .addComponent(GestionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -204,7 +204,7 @@ public class InterfazOperadorAlmacenamiento extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,17 +240,17 @@ public class InterfazOperadorAlmacenamiento extends javax.swing.JFrame {
         this.dispose(); 
     }//GEN-LAST:event_ValidezContImportActionPerformed
 
-    private void GenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarReporteActionPerformed
-       ContenedorAEmbarque cae = new ContenedorAEmbarque();
+    private void EnviarContenedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarContenedorActionPerformed
+       EnviarContenedor cae = new EnviarContenedor();
        cae.setVisible(true);
        this.dispose(); 
-    }//GEN-LAST:event_GenerarReporteActionPerformed
+    }//GEN-LAST:event_EnviarContenedorActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       ContenedorAZonaDescarga cad = new ContenedorAZonaDescarga();
-       cad.setVisible(true);
-       this.dispose();  
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void EnviarAEmbarqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarAEmbarqueActionPerformed
+       EnviarContenedorAEmbarque cae = new EnviarContenedorAEmbarque();
+       cae.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_EnviarAEmbarqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,12 +289,12 @@ public class InterfazOperadorAlmacenamiento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CerrarSesion;
-    private javax.swing.JButton GenerarReporte;
+    private javax.swing.JButton EnviarAEmbarque;
+    private javax.swing.JButton EnviarContenedor;
     private javax.swing.JButton GestionarAlmacen;
     private javax.swing.JMenu Inicio;
     private javax.swing.JButton ValidezContExport;
     private javax.swing.JButton ValidezContImport;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

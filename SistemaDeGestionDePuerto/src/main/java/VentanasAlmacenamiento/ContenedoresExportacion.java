@@ -1,4 +1,5 @@
 package VentanasAlmacenamiento;
+
 import Clases.CConexion;
 import com.mycompany.sistemadegestiondepuerto.InterfazOperadorAlmacenamiento;
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ContenedoresExportacion extends javax.swing.JFrame {
+
     CConexion con=new CConexion();
     Connection CConexion=con.estableceConexion();
     public ContenedoresExportacion() {
@@ -27,31 +29,24 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Salir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        Salir = new javax.swing.JButton();
         ActualizarValidar = new javax.swing.JPanel();
+        Validar = new javax.swing.JComboBox<>();
+        Actualizar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaContenedores = new javax.swing.JTable();
         IdContenedor = new javax.swing.JTextField();
-        Validar = new javax.swing.JComboBox<>();
-        Ubicacion = new javax.swing.JComboBox<>();
         AsignarZona = new javax.swing.JComboBox<>();
-        Actualizar = new javax.swing.JButton();
+        UbicacionContenedor = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
+        ActualizarZona = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaZona = new javax.swing.JTable();
         IdZona = new javax.swing.JTextField();
-        ActualizarZona = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Salir.setText("Salir");
-        Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONTENEDOR DE EXPORTACIÓN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -60,7 +55,29 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
             }
         });
 
-        ActualizarValidar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPERACIONES", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+
+        ActualizarValidar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPERACIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        Validar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Válido", "No Válido" }));
+        Validar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Validar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        Validar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValidarActionPerformed(evt);
+            }
+        });
+
+        Actualizar.setText("Actualizar");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LISTADO DE CONTENEDORES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
@@ -75,6 +92,15 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TablaContenedores.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                TablaContenedoresAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         TablaContenedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaContenedoresMouseClicked(evt);
@@ -86,34 +112,26 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        IdContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IdContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("ID "), "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         IdContenedor.setEnabled(false);
-
-        Validar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Válido", "No Válido" }));
-        Validar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Validar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-
-        Ubicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ZonaDeSalida", "ZonaStandBy" }));
-        Ubicacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ubicación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         AsignarZona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "200201", "200202", "200203", "200204", "200205", "200301", "200302", "200303", "200304", "200305" }));
         AsignarZona.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignar Zona", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        Actualizar.setText("Actualizar");
-        Actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarActionPerformed(evt);
-            }
-        });
+        UbicacionContenedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ZonaDeSalida", "ZonaStandBy" }));
+        UbicacionContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ubicación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         javax.swing.GroupLayout ActualizarValidarLayout = new javax.swing.GroupLayout(ActualizarValidar);
         ActualizarValidar.setLayout(ActualizarValidarLayout);
@@ -122,39 +140,47 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
             .addGroup(ActualizarValidarLayout.createSequentialGroup()
                 .addGroup(ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ActualizarValidarLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Validar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IdContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AsignarZona, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
+                        .addGroup(ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(AsignarZona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(IdContenedor)
+                            .addComponent(Validar, 0, 151, Short.MAX_VALUE)
+                            .addComponent(UbicacionContenedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(ActualizarValidarLayout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                        .addGap(57, 57, 57)
                         .addComponent(Actualizar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ActualizarValidarLayout.setVerticalGroup(
             ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ActualizarValidarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActualizarValidarLayout.createSequentialGroup()
+                .addGroup(ActualizarValidarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ActualizarValidarLayout.createSequentialGroup()
-                        .addComponent(IdContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(IdContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Validar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Validar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(UbicacionContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(AsignarZona, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(AsignarZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Actualizar))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(Actualizar)
+                        .addGap(41, 41, 41))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACTUALIZAR ZONA DE ALMACENAMIENTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACTUALIZAR ZONA DE ALMACENAMIENTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        ActualizarZona.setText("Actualizar");
+        ActualizarZona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarZonaActionPerformed(evt);
+            }
+        });
 
         TablaZona.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,40 +203,34 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
         IdZona.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         IdZona.setEnabled(false);
 
-        ActualizarZona.setText("Actualizar");
-        ActualizarZona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarZonaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(ActualizarZona))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(IdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                        .addGap(25, 25, 25)
+                        .addComponent(IdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(52, 52, 52)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(IdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(114, 114, 114)
+                .addComponent(IdZona, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(ActualizarZona)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -218,54 +238,104 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ActualizarValidar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ActualizarValidar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(373, 373, 373)
+                        .addComponent(Salir)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(ActualizarValidar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(424, 424, 424)
-                .addComponent(Salir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Salir)
-                .addGap(12, 12, 12))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        InterfazOperadorAlmacenamiento salir = new InterfazOperadorAlmacenamiento();
+      InterfazOperadorAlmacenamiento salir = new InterfazOperadorAlmacenamiento();
         salir.setVisible(true);
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
+    private void ValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ValidarActionPerformed
+
+    private void TablaContenedoresAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_TablaContenedoresAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaContenedoresAncestorAdded
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+         try {
+        PreparedStatement ps = CConexion.prepareStatement("UPDATE contenedor SET validezDeCarga=?, UbicacionContenedor=?, idZonaDeAlmacenamiento=? WHERE idContenedor=?");
+        ps.setString(1, Validar.getSelectedItem().toString());
+        ps.setString(2, UbicacionContenedor.getSelectedItem().toString());
+        ps.setString(3, AsignarZona.getSelectedItem().toString());
+        ps.setString(4, IdContenedor.getText());
+        
+        int indice = ps.executeUpdate();
+        if (indice > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Datos Actualizados Correctamente");
+            mostrardatos();
+            limpiarentradasContenedor();
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar datos: " + e.getMessage());
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_ActualizarActionPerformed
+
+    private void TablaContenedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaContenedoresMouseClicked
+        Actualizar.setEnabled(true);
+        int fila=this.TablaContenedores.getSelectedRow();
+        this.IdContenedor.setText(this.TablaContenedores.getValueAt(fila, 0).toString());
+        this.UbicacionContenedor.setSelectedItem(this.TablaContenedores.getValueAt(fila, 2).toString());
+        this.Validar.setSelectedItem(this.TablaContenedores.getValueAt(fila, 3).toString());
+        this.AsignarZona.setSelectedItem(this.TablaZona.getValueAt(fila, 6).toString());
+    }//GEN-LAST:event_TablaContenedoresMouseClicked
+
+    private void TablaZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaZonaMouseClicked
+        ActualizarZona.setEnabled(true);
+        int fila=this.TablaZona.getSelectedRow();
+        this.IdZona.setText(this.TablaZona.getValueAt(fila, 0).toString());   
+    }//GEN-LAST:event_TablaZonaMouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        Actualizar.setEnabled(false);
+        ActualizarZona.setEnabled(false);
+        limpiarentradasContenedor();
+        limpiarentradasZona();
+    }//GEN-LAST:event_jPanel1MouseClicked
+
     private void ActualizarZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarZonaActionPerformed
-        try {
+       try {
         // Obtener el ID de la nueva zona de almacenamiento
         String idZonaNueva = AsignarZona.getSelectedItem().toString();
         
@@ -300,50 +370,6 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_ActualizarZonaActionPerformed
 
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-        try {
-        PreparedStatement ps = CConexion.prepareStatement("UPDATE contenedor SET validezDeCarga=?, UbicacionContenedor=?, idZonaDeAlmacenamiento=? WHERE idContenedor=?");
-        ps.setString(1, Validar.getSelectedItem().toString());
-        ps.setString(2, Ubicacion.getSelectedItem().toString());
-        ps.setString(3, AsignarZona.getSelectedItem().toString());
-        ps.setString(4, IdContenedor.getText());
-        
-        int indice = ps.executeUpdate();
-        if (indice > 0) {
-            JOptionPane.showMessageDialog(rootPane, "Datos Actualizados Correctamente");
-            mostrardatos();
-            limpiarentradasContenedor();
-        } else {
-            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila para actualizar");
-        }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al actualizar datos: " + e.getMessage());
-        e.printStackTrace();
-    }
-    }//GEN-LAST:event_ActualizarActionPerformed
-
-    private void TablaContenedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaContenedoresMouseClicked
-        Actualizar.setEnabled(true);
-        int fila=this.TablaContenedores.getSelectedRow();
-        this.IdContenedor.setText(this.TablaContenedores.getValueAt(fila, 0).toString());
-        this.Ubicacion.setSelectedItem(this.TablaContenedores.getValueAt(fila, 2).toString());
-        this.Validar.setSelectedItem(this.TablaContenedores.getValueAt(fila, 3).toString());
-        this.AsignarZona.setSelectedItem(this.TablaZona.getValueAt(fila, 6).toString());
-    }//GEN-LAST:event_TablaContenedoresMouseClicked
-
-    private void TablaZonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaZonaMouseClicked
-        ActualizarZona.setEnabled(true);
-        int fila=this.TablaZona.getSelectedRow();
-        this.IdZona.setText(this.TablaZona.getValueAt(fila, 0).toString());
-    }//GEN-LAST:event_TablaZonaMouseClicked
-
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        Actualizar.setEnabled(false);
-        ActualizarZona.setEnabled(false);
-        limpiarentradasContenedor();
-        limpiarentradasZona();
-    }//GEN-LAST:event_jPanel1MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -370,6 +396,7 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ContenedoresExportacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -389,7 +416,7 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
     private javax.swing.JButton Salir;
     private javax.swing.JTable TablaContenedores;
     private javax.swing.JTable TablaZona;
-    private javax.swing.JComboBox<String> Ubicacion;
+    private javax.swing.JComboBox<String> UbicacionContenedor;
     private javax.swing.JComboBox<String> Validar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -397,8 +424,8 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
-
- private void mostrardatos() {
+   
+    private void mostrardatos() {
         DefaultTableModel modelo=new DefaultTableModel();
         modelo.addColumn("idContenedor");
         modelo.addColumn("TipoDeCarga");
@@ -465,4 +492,5 @@ public class ContenedoresExportacion extends javax.swing.JFrame {
     private void limpiarentradasZona() {
         IdZona.setText("");  
     }
+  
 }
