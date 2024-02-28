@@ -277,12 +277,12 @@ public class GenerarReporte2 extends javax.swing.JFrame {
 
     private void BotonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarActionPerformed
         try{
-            PreparedStatement ps=CConexion.prepareStatement("INSERT INTO Reporte VALUES");
-            ps.setString(1, TextoIdReporte.getText());
-            ps.setString(2, TextoTiempoA.getText());
-            ps.setString(3, TextoTiempoE.getText());
-            ps.setString(4, TextoIdBarco.getText());
-            ps.setString(5, ComboEstibas.getSelectedItem().toString());
+            PreparedStatement ps=CConexion.prepareStatement("INSERT INTO Reporte (CumplirEstibas,idReporte,tiempoAsignado,tiempoEmbarque,idBarco,idContenedor,TipoDeCarga,DestinoContenedor) VALUES(?,?,?,?,?,?,?,?)");
+            ps.setString(1, ComboEstibas.getSelectedItem().toString());
+            ps.setString(2, TextoIdReporte.getText());
+            ps.setString(3, TextoTiempoA.getText());
+            ps.setString(4, TextoTiempoE.getText());
+            ps.setString(5, TextoIdBarco.getText());
             ps.setString(6, TextoIdContenedor.getText());
             ps.setString(7, TextoTipoCarga.getText());
             ps.setString(8, TextoDestinoContenedor.getText());
@@ -410,7 +410,7 @@ public class GenerarReporte2 extends javax.swing.JFrame {
         modelo.addColumn("Destino Barco");
         TablaBarco.setModel(modelo);
         String consultasql="select * from barco where OperacionesBarco = 'Aprobado'";
-        String data[]=new String[3];
+        String data[]=new String[2];
         
         Statement st;
         try{
@@ -464,7 +464,7 @@ public class GenerarReporte2 extends javax.swing.JFrame {
         modelo.addColumn("Destino Contenedor");
         TablaReporte.setModel(modelo);
         String consultasql="select * from reporte";
-        String data[]=new String[5];
+        String data[]=new String[9];
         
         Statement st;
         try{
@@ -476,6 +476,9 @@ public class GenerarReporte2 extends javax.swing.JFrame {
                 data[2]=rs.getString(3);
                 data[3]=rs.getString(4);
                 data[4]=rs.getString(5);
+                data[5]=rs.getString(6);
+                data[6]=rs.getString(7);
+                data[7]=rs.getString(8);
                 modelo.addRow(data);
             }
         } catch(SQLException e){
