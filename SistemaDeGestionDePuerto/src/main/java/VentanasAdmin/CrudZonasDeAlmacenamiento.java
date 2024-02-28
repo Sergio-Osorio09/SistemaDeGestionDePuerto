@@ -41,7 +41,6 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        textoNombreZonaAlmacenamiento = new javax.swing.JTextField();
         TextoIdZonaAlmacenamiento = new javax.swing.JTextField();
         textoZonaAlmCapacidadMaxima = new javax.swing.JTextField();
         textoZonaAlmCapacidadUsada = new javax.swing.JTextField();
@@ -49,12 +48,12 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         textoZonaAlmTipoCarga = new javax.swing.JTextField();
+        textoNombreZonaAlmacenamiento = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         zonasAlmacenamientoTable = new javax.swing.JTable();
 
         jMenuItem1.setText("Eliminar");
-        jMenuItem1.setComponentPopupMenu(jPopupMenu1);
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -70,13 +69,6 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
-            }
-        });
-
-        textoNombreZonaAlmacenamiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre de zona", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-        textoNombreZonaAlmacenamiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoNombreZonaAlmacenamientoActionPerformed(evt);
             }
         });
 
@@ -119,43 +111,51 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
 
         textoZonaAlmTipoCarga.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de carga", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
+        textoNombreZonaAlmacenamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ZonaDeEntrada", "ZonaDeSalida", "ZonaStandBy" }));
+        textoNombreZonaAlmacenamiento.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre de zona", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        textoNombreZonaAlmacenamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoNombreZonaAlmacenamientoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textoZonaAlmCapacidadUsada, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(textoZonaAlmCapacidadMaxima, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                        .addComponent(TextoIdZonaAlmacenamiento)
-                        .addComponent(textoNombreZonaAlmacenamiento)
-                        .addComponent(textoZonaAlmTipoCarga, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textoNombreZonaAlmacenamiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textoZonaAlmCapacidadUsada, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnCrear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)))
+                        .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(textoZonaAlmCapacidadMaxima, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                        .addComponent(TextoIdZonaAlmacenamiento)
+                        .addComponent(textoZonaAlmTipoCarga, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(TextoIdZonaAlmacenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(TextoIdZonaAlmacenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textoNombreZonaAlmacenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textoNombreZonaAlmacenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textoZonaAlmTipoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textoZonaAlmTipoCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(textoZonaAlmCapacidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textoZonaAlmCapacidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(textoZonaAlmCapacidadUsada, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(textoZonaAlmCapacidadUsada, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -178,6 +178,7 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        zonasAlmacenamientoTable.setComponentPopupMenu(jPopupMenu1);
         zonasAlmacenamientoTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         zonasAlmacenamientoTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -190,7 +191,7 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                 .addContainerGap())
@@ -239,7 +240,7 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try{
-            PreparedStatement ps = CConexion.prepareStatement("Update ZonaDeAlmacenamiento set idZonaDeAlmacenamiento='"+TextoIdZonaAlmacenamiento.getText()+"',nombreZonaDeAlmacenamiento='"+textoNombreZonaAlmacenamiento.getText()+"',TipoDeCarga='"+textoZonaAlmTipoCarga.getText()+"',CapacidadMaxima='"+textoZonaAlmCapacidadMaxima.getText()+"',CantidadActual='"+textoZonaAlmCapacidadUsada.getText()+"' where idZonaDeAlmacenamiento='"+TextoIdZonaAlmacenamiento.getText()+"'");
+            PreparedStatement ps = CConexion.prepareStatement("Update ZonaDeAlmacenamiento set idZonaDeAlmacenamiento='"+TextoIdZonaAlmacenamiento.getText()+"',nombreZonaDeAlmacenamiento='"+textoNombreZonaAlmacenamiento.getSelectedItem()+"',TipoDeCarga='"+textoZonaAlmTipoCarga.getText()+"',CapacidadMaxima='"+textoZonaAlmCapacidadMaxima.getText()+"',CantidadActual='"+textoZonaAlmCapacidadUsada.getText()+"' where idZonaDeAlmacenamiento='"+TextoIdZonaAlmacenamiento.getText()+"'");
             int indice = ps.executeUpdate();
             
             if(indice>0){
@@ -262,7 +263,7 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
         try{
             PreparedStatement ps = CConexion.prepareStatement("INSERT INTO ZonaDeAlmacenamiento(idZonaDeAlmacenamiento,nombreZonaDeAlmacenamiento,TipoDeCarga,CapacidadMaxima,CantidadActual) VALUES(?,?,?,?,?)");
             ps.setString(1, TextoIdZonaAlmacenamiento.getText());
-            ps.setString(2, textoNombreZonaAlmacenamiento.getText());
+            ps.setString(2, (String)textoNombreZonaAlmacenamiento.getSelectedItem());
             ps.setString(3, textoZonaAlmTipoCarga.getText());
             ps.setString(4, textoZonaAlmCapacidadMaxima.getText());
             ps.setString(5, textoZonaAlmCapacidadUsada.getText());
@@ -275,10 +276,6 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
             System.out.println("Error al registrar usuario"+ e);
         }
     }//GEN-LAST:event_btnCrearActionPerformed
-
-    private void textoNombreZonaAlmacenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreZonaAlmacenamientoActionPerformed
-
-    }//GEN-LAST:event_textoNombreZonaAlmacenamientoActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         InterfazAdministradorSistema volver = new InterfazAdministradorSistema();
@@ -295,27 +292,11 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
         btnActualizar.setEnabled(true);
         int fila = this.zonasAlmacenamientoTable.getSelectedRow();
         this.TextoIdZonaAlmacenamiento.setText(this.zonasAlmacenamientoTable.getValueAt(fila, 0).toString());
-        this.textoNombreZonaAlmacenamiento.setText(this.zonasAlmacenamientoTable.getValueAt(fila, 1).toString());
+        this.textoNombreZonaAlmacenamiento.setSelectedItem(this.zonasAlmacenamientoTable.getValueAt(fila, 1).toString());
         this.textoZonaAlmTipoCarga.setText(this.zonasAlmacenamientoTable.getValueAt(fila, 2).toString());
         this.textoZonaAlmCapacidadMaxima.setText(this.zonasAlmacenamientoTable.getValueAt(fila, 3).toString());
         this.textoZonaAlmCapacidadUsada.setText(this.zonasAlmacenamientoTable.getValueAt(fila, 4).toString());
     }//GEN-LAST:event_zonasAlmacenamientoTableMouseClicked
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if(JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar usuario","Salir",JOptionPane.YES_NO_CANCEL_OPTION)==0){
-            try{
-                PreparedStatement ps = CConexion.prepareStatement("DELETE FROM ZonaDeAlmacenamiento where idZonaDeAlmacenamiento='"+TextoIdZonaAlmacenamiento.getText()+"'");
-            int indice = ps.executeUpdate();
-            if(indice>0){
-                mostrarDatos();
-            }else{
-                System.out.println("No selecciono fila");
-            }    
-            }catch(SQLException e){
-                System.out.println("Error al eliminar"+ e);
-            }
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         btnCrear.setEnabled(true);
@@ -328,6 +309,26 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
         btnActualizar.setEnabled(false);
         limpiarEntradas();
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void textoNombreZonaAlmacenamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreZonaAlmacenamientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoNombreZonaAlmacenamientoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar la zona de almacenamiento","Salir",JOptionPane.YES_NO_CANCEL_OPTION)==0){
+            try{
+                PreparedStatement ps=CConexion.prepareStatement("DELETE FROM ZonaDeAlmacenamiento where idZonaDeAlmacenamiento='"+TextoIdZonaAlmacenamiento.getText()+"'");
+            int indice=ps.executeUpdate();
+            if(indice>0){
+                mostrarDatos();
+            }else{
+            System.out.println("No selecciono fila");
+            }    
+            }catch(SQLException e){
+                System.out.println("Error al eliminar"+ e);
+            }
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,7 +376,7 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField textoNombreZonaAlmacenamiento;
+    private javax.swing.JComboBox<String> textoNombreZonaAlmacenamiento;
     private javax.swing.JTextField textoZonaAlmCapacidadMaxima;
     private javax.swing.JTextField textoZonaAlmCapacidadUsada;
     private javax.swing.JTextField textoZonaAlmTipoCarga;
@@ -391,7 +392,7 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
         modelo.addColumn("Cap. usada");
         zonasAlmacenamientoTable.setModel(modelo);
         String consultaSQL = "select*from ZonaDeAlmacenamiento";
-        String data[] = new String[6];
+        String data[] = new String[5];
         
         Statement st;
         try {
@@ -412,7 +413,6 @@ public class CrudZonasDeAlmacenamiento extends javax.swing.JFrame {
     
     private void limpiarEntradas() {
         TextoIdZonaAlmacenamiento.setText("");
-        textoNombreZonaAlmacenamiento.setText("");
         textoZonaAlmTipoCarga.setText("");
         textoZonaAlmCapacidadMaxima.setText("");
         textoZonaAlmCapacidadUsada.setText("");

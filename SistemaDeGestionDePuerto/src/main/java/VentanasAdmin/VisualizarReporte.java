@@ -5,6 +5,7 @@
 package VentanasAdmin;
 
 import Clases.CConexion;
+import com.mycompany.sistemadegestiondepuerto.InterfazAdministradorSistema;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,6 +41,7 @@ public class VisualizarReporte extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ReporteTable = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,21 +60,34 @@ public class VisualizarReporte extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(ReporteTable);
 
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,6 +103,12 @@ public class VisualizarReporte extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        InterfazAdministradorSistema volver = new InterfazAdministradorSistema();
+        volver.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,55 +147,42 @@ public class VisualizarReporte extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ReporteTable;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
     private void mostrarDatos() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("idOperacion");
-        modelo.addColumn("id de Usuario");
+        modelo.addColumn("id Reporte");
+        modelo.addColumn("Tiempo asignado");
         modelo.addColumn("Tiempo de embarque");
-        modelo.addColumn("Destino de contenedor");
-        modelo.addColumn("Validez de carga");
+        modelo.addColumn("id Barco");
         modelo.addColumn("Cumplir estibas");
-        modelo.addColumn("Tipo de Carga");
-        modelo.addColumn("Ubicacion de contenedor");
+        modelo.addColumn("id Contenedor");
+        modelo.addColumn("Tipo de carga");
+        modelo.addColumn("Destino de contenedor");
         ReporteTable.setModel(modelo);
-        String consultaSQLIdOperacion = "select idReporte from Reporte";
-        String consultaSQLUsuario = "select idUsuario from Usuario"; // solo admin
-        String consulta1SQLReporte = "select tiempoEmbarque from Reporte";
-        String consulta1SQLContenedor = "select DestinoContenedor from Contenedor";
-        String consulta2SQLContenedor = "select ValidezDeCarga from Contenedor";
-        String consulta3SQLReporte = "select CumplirEstibas from Reporte";
-        String consulta4SQLContenedor = "select TipoDeCarga from Contenedor";
-        String consulta5SQLContenedor = "select UbicacionContenedor from Contenedor";
-                
+        String consultaSQL = "select*from Reporte";
         String data[] = new String[8];
         
         Statement st;
-        try {
+        try{
             st = CConexion.createStatement();
-            ResultSet rs = st.executeQuery(consultaSQLIdOperacion);
-            data[0] = rs.getString(1);
-            rs = st.executeQuery(consultaSQLUsuario);
-            data[1] = rs.getString(2);
-            rs = st.executeQuery(consulta1SQLReporte);
-            data[2] = rs.getString(3);
-            rs = st.executeQuery(consulta1SQLContenedor);
-            data[3] = rs.getString(4);
-            rs = st.executeQuery(consulta2SQLContenedor);
-            data[4] = rs.getString(5);
-            rs = st.executeQuery(consulta3SQLReporte);
-            data[5] = rs.getString(6);
-            rs = st.executeQuery(consulta4SQLContenedor);
-            data[6] = rs.getString(7);
-            rs = st.executeQuery(consulta5SQLContenedor);
-            data[7] = rs.getString(8);
-            
-            // idOperacion
-        } catch (SQLException e) {
-            System.out.println("Error al mostrar datos: " + e);
+            ResultSet rs = st.executeQuery(consultaSQL);
+            while(rs.next()) {
+                data[0] = rs.getString(1);
+                data[1] = rs.getString(2);
+                data[2] = rs.getString(3);
+                data[3] = rs.getString(4);
+                data[4] = rs.getString(5);
+                data[5] = rs.getString(6);
+                data[6] = rs.getString(7);
+                data[7] = rs.getString(8);
+                modelo.addRow(data);
+            }
+        } catch(SQLException e){
+            System.out.println("Error al mostrar datos " + e);
         }
     }
 }

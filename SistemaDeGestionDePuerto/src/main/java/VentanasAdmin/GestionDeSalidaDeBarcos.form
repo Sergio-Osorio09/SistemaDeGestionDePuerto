@@ -80,24 +80,24 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel2MouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textoAprobAutoridadesBarco" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="textoEstadoFisicoBarco" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="textoIdBarco" min="-2" pref="280" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnActualizar" alignment="1" max="32767" attributes="0"/>
+                              <Component id="btnActualizar" alignment="1" pref="193" max="32767" attributes="0"/>
                               <Component id="btnVolver" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnDesaprobarSalida" alignment="1" pref="129" max="32767" attributes="0"/>
-                              <Component id="btnAprobarSalida" alignment="1" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="textoIdBarco" alignment="0" max="32767" attributes="0"/>
+                          <Component id="textoEstadoFisicoBarco" max="32767" attributes="0"/>
+                          <Component id="textoAprobAutoridadesBarco" alignment="0" max="32767" attributes="0"/>
+                          <Component id="textoEstadoAprobacionDeSalida" pref="358" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
@@ -107,20 +107,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="textoIdBarco" min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="textoIdBarco" min="-2" pref="64" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="textoEstadoFisicoBarco" min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="textoEstadoFisicoBarco" min="-2" pref="64" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="textoAprobAutoridadesBarco" min="-2" pref="67" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="btnActualizar" min="-2" pref="45" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnAprobarSalida" min="-2" pref="45" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnDesaprobarSalida" min="-2" pref="45" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnVolver" min="-2" pref="45" max="-2" attributes="0"/>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <Component id="textoAprobAutoridadesBarco" min="-2" pref="64" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="textoEstadoAprobacionDeSalida" min="-2" pref="64" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                      <Component id="btnActualizar" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnVolver" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace pref="71" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -128,6 +126,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="textoIdBarco">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Id de barco"/>
@@ -138,8 +137,30 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoIdBarcoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="textoEstadoFisicoBarco">
+            <Component class="javax.swing.JButton" name="btnActualizar">
               <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnVolver">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Volver"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="textoEstadoFisicoBarco">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Buen estado"/>
+                    <StringItem index="1" value="Da&#xf1;ado"/>
+                  </StringArray>
+                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Estado f&#xed;sico de barco"/>
@@ -149,9 +170,18 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoEstadoFisicoBarcoActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="textoAprobAutoridadesBarco">
+            <Component class="javax.swing.JComboBox" name="textoAprobAutoridadesBarco">
               <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Aprobado"/>
+                    <StringItem index="1" value="Desaprobado"/>
+                  </StringArray>
+                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Estado de aprobaci&#xf3;n de autoridades"/>
@@ -161,29 +191,28 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoAprobAutoridadesBarcoActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btnActualizar">
+            <Component class="javax.swing.JComboBox" name="textoEstadoAprobacionDeSalida">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Actualizar"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="Aprobado"/>
+                    <StringItem index="1" value="Derivado a puerto de reparaci&#xf3;n"/>
+                    <StringItem index="2" value="Derivado a autoridades"/>
+                  </StringArray>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Estado de aprobaci&#xf3;n de salida"/>
+                  </Border>
+                </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnAprobarSalida">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Aprobar salida"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnDesaprobarSalida">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Desaprobar salida"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnVolver">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Volver"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverActionPerformed"/>
-              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -197,13 +226,16 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel3MouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="610" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="532" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -225,7 +257,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="SalidaDeBarcoTable">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -236,6 +268,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SalidaDeBarcoTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
