@@ -4,8 +4,10 @@
  */
 package com.mycompany.sistemadegestiondepuerto;
 
+import VentanasEmbarque.EmbarcarContenedorBarco;
 import VentanasEmbarque.GenerarReporte;
 import VentanasEmbarque.GestionarLaytime;
+import VentanasEmbarque.RegistroContenedoresImportacion;
 import VentanasEmbarque.ValidarDesembarque;
 import VentanasEmbarque.VisualEmbarque;
 import javax.swing.JMenuItem;
@@ -50,8 +52,6 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
     private void initComponents() {
 
         OperadorEmbarque = new javax.swing.JPanel();
-        IngresarLaytime = new javax.swing.JPanel();
-        BotonLaytime = new javax.swing.JButton();
         IngresarEmbarque = new javax.swing.JPanel();
         BotonEmbarque = new javax.swing.JButton();
         IngresarDesembarque = new javax.swing.JPanel();
@@ -64,35 +64,9 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        OperadorEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPERADOR DE EMBARQUE / DESEMBARQUE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
+        OperadorEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "OPERADOR DE EMBARQUE / DESEMBARQUE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
 
-        IngresarLaytime.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestionar Laytime", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-
-        BotonLaytime.setText("Ingresar");
-        BotonLaytime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonLaytimeActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout IngresarLaytimeLayout = new javax.swing.GroupLayout(IngresarLaytime);
-        IngresarLaytime.setLayout(IngresarLaytimeLayout);
-        IngresarLaytimeLayout.setHorizontalGroup(
-            IngresarLaytimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(IngresarLaytimeLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(BotonLaytime, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        IngresarLaytimeLayout.setVerticalGroup(
-            IngresarLaytimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(IngresarLaytimeLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(BotonLaytime)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        IngresarEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestionar Embarque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IngresarEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Gestionar Embarque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         BotonEmbarque.setText("Ingresar");
         BotonEmbarque.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +80,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
         IngresarEmbarqueLayout.setHorizontalGroup(
             IngresarEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresarEmbarqueLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(BotonEmbarque, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
@@ -118,7 +92,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        IngresarDesembarque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestionar desembarque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IngresarDesembarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Registro Contenedores Importacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         BotonDesembarque.setText("Ingresar");
         BotonDesembarque.addActionListener(new java.awt.event.ActionListener() {
@@ -132,19 +106,19 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
         IngresarDesembarqueLayout.setHorizontalGroup(
             IngresarDesembarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresarDesembarqueLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(99, Short.MAX_VALUE)
                 .addComponent(BotonDesembarque, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(92, 92, 92))
         );
         IngresarDesembarqueLayout.setVerticalGroup(
             IngresarDesembarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IngresarDesembarqueLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(35, 35, 35)
                 .addComponent(BotonDesembarque)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        IngresarReporte.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Generar reporte", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IngresarReporte.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Generar reporte", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         BotonReporte.setText("Ingresar");
         BotonReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -174,29 +148,27 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
         OperadorEmbarque.setLayout(OperadorEmbarqueLayout);
         OperadorEmbarqueLayout.setHorizontalGroup(
             OperadorEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OperadorEmbarqueLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(OperadorEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(IngresarDesembarque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(IngresarLaytime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(OperadorEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(IngresarEmbarque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(IngresarReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(67, 67, 67))
+            .addGroup(OperadorEmbarqueLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(IngresarEmbarque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addComponent(IngresarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
+            .addGroup(OperadorEmbarqueLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(IngresarDesembarque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         OperadorEmbarqueLayout.setVerticalGroup(
             OperadorEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OperadorEmbarqueLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(OperadorEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(IngresarEmbarque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(IngresarLaytime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(64, 64, 64)
-                .addGroup(OperadorEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(IngresarDesembarque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IngresarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(IngresarDesembarque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(OperadorEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(IngresarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IngresarEmbarque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         Inicio.setText("Inicio");
@@ -235,27 +207,19 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
-    private void BotonLaytimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLaytimeActionPerformed
-        GestionarLaytime laytime = new GestionarLaytime();
-        laytime.setLocationRelativeTo(null);
-        laytime.setSize(1000,530);
-        laytime.setVisible(true);
-        this.dispose(); 
-    }//GEN-LAST:event_BotonLaytimeActionPerformed
-
     private void BotonEmbarqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEmbarqueActionPerformed
-        VisualEmbarque embarque = new VisualEmbarque();
+        EmbarcarContenedorBarco embarque = new EmbarcarContenedorBarco();
         embarque.setLocationRelativeTo(null);
-        embarque.setSize(1000,600);
+        embarque.setSize(920,710);
         embarque.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_BotonEmbarqueActionPerformed
 
     private void BotonDesembarqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDesembarqueActionPerformed
-        ValidarDesembarque desembarque = new ValidarDesembarque();
-        desembarque.setLocationRelativeTo(null);
-        desembarque.setSize(1000,400);
-        desembarque.setVisible(true);
+        RegistroContenedoresImportacion registro = new RegistroContenedoresImportacion();
+        registro.setLocationRelativeTo(null);
+        registro.setSize(1000,600);
+        registro.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_BotonDesembarqueActionPerformed
 
@@ -305,12 +269,10 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonDesembarque;
     private javax.swing.JButton BotonEmbarque;
-    private javax.swing.JButton BotonLaytime;
     private javax.swing.JButton BotonReporte;
     private javax.swing.JMenuItem CerrarSesion;
     private javax.swing.JPanel IngresarDesembarque;
     private javax.swing.JPanel IngresarEmbarque;
-    private javax.swing.JPanel IngresarLaytime;
     private javax.swing.JPanel IngresarReporte;
     private javax.swing.JMenu Inicio;
     private javax.swing.JMenuBar MenuInicio;
