@@ -6,10 +6,7 @@ package com.mycompany.sistemadegestiondepuerto;
 
 import VentanasEmbarque.EmbarcarContenedorBarco;
 import VentanasEmbarque.GenerarReporte2;
-import VentanasEmbarque.GestionarLaytime;
 import VentanasEmbarque.RegistroContenedoresImportacion;
-import VentanasEmbarque.ValidarDesembarque;
-import VentanasEmbarque.VisualEmbarque;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 

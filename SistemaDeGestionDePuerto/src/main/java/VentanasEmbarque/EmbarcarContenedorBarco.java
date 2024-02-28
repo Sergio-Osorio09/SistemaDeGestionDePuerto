@@ -46,7 +46,6 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
         txtDestino = new javax.swing.JTextField();
         txtPropietario = new javax.swing.JTextField();
         txtIDBarco = new javax.swing.JTextField();
-        BotonAsignarBarco = new javax.swing.JButton();
         BotonActualizarAsignacion = new javax.swing.JButton();
         BotonVolverMenu = new javax.swing.JButton();
         PanelContenedoresExportacion = new javax.swing.JPanel();
@@ -58,34 +57,34 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        PanelPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "EMBARCAR CONTENEDORES DE EXPORTACIÓN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
+        PanelPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EMBARCAR CONTENEDORES DE EXPORTACIÓN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
 
-        PanelEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "EMBARQUE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+        PanelEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EMBARQUE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
-        txtIDContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder("ID Contenedor"));
+        txtIDContenedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID Contenedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         txtIDContenedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDContenedorActionPerformed(evt);
             }
         });
 
-        txtTipoDeCarga.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Carga"));
+        txtTipoDeCarga.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de Carga", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        txtDestino.setBorder(javax.swing.BorderFactory.createTitledBorder("Destino"));
+        txtDestino.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Destino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        txtPropietario.setBorder(javax.swing.BorderFactory.createTitledBorder("Propietario"));
+        txtPropietario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Propietario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        txtIDBarco.setBorder(javax.swing.BorderFactory.createTitledBorder("ID Barco"));
+        txtIDBarco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID Barco", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        BotonAsignarBarco.setText("Asignar");
-        BotonAsignarBarco.addActionListener(new java.awt.event.ActionListener() {
+        BotonActualizarAsignacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotonActualizarAsignacion.setText("Actualizar");
+        BotonActualizarAsignacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAsignarBarcoActionPerformed(evt);
+                BotonActualizarAsignacionActionPerformed(evt);
             }
         });
 
-        BotonActualizarAsignacion.setText("Actualizar");
-
+        BotonVolverMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BotonVolverMenu.setText("Volver al Menu");
         BotonVolverMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,12 +99,12 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
             .addGroup(PanelEmbarqueLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(PanelEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonActualizarAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIDContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIDBarco, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BotonActualizarAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotonAsignarBarco, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelEmbarqueLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(BotonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTipoDeCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -114,26 +113,24 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
         PanelEmbarqueLayout.setVerticalGroup(
             PanelEmbarqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEmbarqueLayout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(txtIDContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(txtIDContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtTipoDeCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTipoDeCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtIDBarco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(BotonAsignarBarco)
+                .addComponent(txtIDBarco, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(BotonActualizarAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(BotonActualizarAsignacion)
-                .addGap(18, 18, 18)
-                .addComponent(BotonVolverMenu)
-                .addGap(23, 23, 23))
+                .addComponent(BotonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PanelContenedoresExportacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "CONTENEDORES EXPORTACIÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+        PanelContenedoresExportacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONTENEDORES EXPORTACIÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
         TablaContenedoresExportacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,7 +167,7 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        PanelBarcos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "LISTA DE BARCOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+        PanelBarcos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LISTA DE BARCOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
         PanelBarcos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PanelBarcosMouseClicked(evt);
@@ -224,12 +221,12 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
             PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelPrincipalLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(PanelEmbarque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelPrincipalLayout.createSequentialGroup()
                         .addComponent(PanelContenedoresExportacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PanelBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanelEmbarque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(PanelBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -271,56 +268,30 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
         this.txtTipoDeCarga.setText(this.TablaContenedoresExportacion.getValueAt(fila, 1).toString());
         this.txtDestino.setText(this.TablaContenedoresExportacion.getValueAt(fila, 2).toString());
         this.txtPropietario.setText(this.TablaContenedoresExportacion.getValueAt(fila, 3).toString());
-        this.txtIDBarco.setText(this.TablaContenedoresExportacion.getValueAt(fila, 5).toString());
+        this.txtIDBarco.setText(this.TablaContenedoresExportacion.getValueAt(fila, 4).toString());
     }//GEN-LAST:event_TablaContenedoresExportacionMouseClicked
 
     private void PanelBarcosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelBarcosMouseClicked
         int fila = this.TablaBarcos.getSelectedRow();
     }//GEN-LAST:event_PanelBarcosMouseClicked
 
-    private void BotonAsignarBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAsignarBarcoActionPerformed
-        /*try {
-            // Verificar si se ha seleccionado una fila en la tabla
-            if (TablaBarcos.getSelectedRow() < 0) {
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila en la tabla antes de continuar");
-                return;
+    private void BotonActualizarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActualizarAsignacionActionPerformed
+        try{
+            PreparedStatement ps=CConexion.prepareStatement
+            ("Update contenedor set propietarioContenedor='"+txtPropietario.getText()+"',idBarco='"+txtIDBarco.getText()+"' where idContenedor='"+txtIDContenedor.getText()+"'");
+            int indice=ps.executeUpdate();
+
+            if(indice>0){
+                JOptionPane.showMessageDialog(rootPane, "Datos Actualizados Correctamente");
+                mostrardatos();
+                limpiarentradas();
+            }else{
+                JOptionPane.showMessageDialog(null, "No selecciono Fila");
             }
-
-            // Verificar si el estado de operaciones del barco es 'Aprobado' y si no hay otro barco aprobado con el mismo idMuelle
-            String query = "SELECT COUNT(*) FROM barco WHERE idMuelle = ? AND OperacionesBarco = 'Aprobado'";
-            try (PreparedStatement stmt = CConexion.prepareStatement(query)) {
-                stmt.setInt(1, Integer.parseInt(TextoAsignarMuelle.getText()));
-                ResultSet rs = stmt.executeQuery();
-                rs.next();
-                int count = rs.getInt(1);
-
-                if (count == 0 || TextoEstado.getText().equals("Finalizado")) {
-                    // Si no hay conflictos, actualizar los datos del barco
-                    query = "UPDATE barco SET DestinoBarco = ?, CantidadDescargable = ?, CapacidadMaxima = ?, idMuelle = ? WHERE idBarco = ? AND OperacionesBarco = 'Aprobado'";
-                    try (PreparedStatement updateStmt = CConexion.prepareStatement(query)) {
-                        updateStmt.setString(1, TextoDestino.getText());
-                        updateStmt.setInt(2, Integer.parseInt(TextoCantidad.getText()));
-                        updateStmt.setInt(3, Integer.parseInt(TextoCapacidad.getText()));
-                        updateStmt.setInt(4, Integer.parseInt(TextoAsignarMuelle.getText()));
-                        updateStmt.setInt(5, Integer.parseInt(TextoIdBarco.getText()));
-                        int rowsAffected = updateStmt.executeUpdate();
-
-                        if (rowsAffected > 0) {
-                            JOptionPane.showMessageDialog(rootPane, "Datos actualizados correctamente");
-                            mostrardatosbarco();
-                            limpiarentradas();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No se pudo actualizar los datos del barco");
-                        }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Este muelle se encuentra ocupado, seleccione otro muelle");
-                }
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "El muelle ingresado no existe, seleccione otro muelle");
-        }*/
-    }//GEN-LAST:event_BotonAsignarBarcoActionPerformed
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al actualizar datos"+e);
+        }
+    }//GEN-LAST:event_BotonActualizarAsignacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,7 +330,6 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonActualizarAsignacion;
-    private javax.swing.JButton BotonAsignarBarco;
     private javax.swing.JButton BotonVolverMenu;
     private javax.swing.JPanel PanelBarcos;
     private javax.swing.JPanel PanelContenedoresExportacion;
@@ -435,5 +405,6 @@ public class EmbarcarContenedorBarco extends javax.swing.JFrame {
         txtDestino.setText("");
         txtPropietario.setText("");
         txtIDBarco.setText("");
+        txtIDContenedor.setText("");
     }
 }
