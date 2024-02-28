@@ -5,7 +5,7 @@
 package com.mycompany.sistemadegestiondepuerto;
 
 import VentanasEmbarque.EmbarcarContenedorBarco;
-import VentanasEmbarque.GenerarReporte;
+import VentanasEmbarque.GenerarReporte2;
 import VentanasEmbarque.GestionarLaytime;
 import VentanasEmbarque.RegistroContenedoresImportacion;
 import VentanasEmbarque.ValidarDesembarque;
@@ -64,9 +64,9 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        OperadorEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "OPERADOR DE EMBARQUE / DESEMBARQUE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
+        OperadorEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPERADOR DE EMBARQUE / DESEMBARQUE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18))); // NOI18N
 
-        IngresarEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Gestionar Embarque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IngresarEmbarque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestionar Embarque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         BotonEmbarque.setText("Ingresar");
         BotonEmbarque.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +92,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        IngresarDesembarque.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Registro Contenedores Importacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IngresarDesembarque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro Contenedores Importacion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         BotonDesembarque.setText("Ingresar");
         BotonDesembarque.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +118,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        IngresarReporte.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Generar reporte", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        IngresarReporte.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Generar reporte", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         BotonReporte.setText("Ingresar");
         BotonReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +155,7 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
                 .addComponent(IngresarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
             .addGroup(OperadorEmbarqueLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(120, 120, 120)
                 .addComponent(IngresarDesembarque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -224,9 +224,9 @@ public class InterfazOperadorEmbarque extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonDesembarqueActionPerformed
 
     private void BotonReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReporteActionPerformed
-        GenerarReporte reporte = new GenerarReporte();
+        GenerarReporte2 reporte = new GenerarReporte2();
         reporte.setLocationRelativeTo(null);
-        reporte.setSize(1300,700);
+        reporte.setSize(1210,750);
         reporte.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_BotonReporteActionPerformed
